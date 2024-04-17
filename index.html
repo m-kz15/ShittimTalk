@@ -1,0 +1,246 @@
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="style.css" type="text/css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	</head>
+	<body onload="setCanvas();">
+		<!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+    		<input type="checkbox" id="drawer-check" class="sub_check" >
+
+    		<!-- ハンバーガーアイコン -->
+   		 <label for="drawer-check" class="drawer-open"><span></span></label>
+		
+		<div id="main">
+			<div class="create_area" id="create_area">
+				<div class="create_header">
+					<div class="header_top">
+						<p>ShittimTalk</p>
+					</div>
+					<div class="header_bottom">
+						<session class="header_frame">
+							<p id="create_title">サブタイトル</p>
+							<p id="creater_name">作者名</p>
+						</session>
+					</div>
+				</div>
+				<div class="create_body" id="output">
+<!--<p class="gap" id="large"></p>
+<div class="talk_box" id="l_s">
+	<div class="icon_box">
+		<img src="" class="icon">
+	</div>
+	<div class="frame">
+		<div class="name_box">
+			<div class="name_area">
+				<p class="name">キャラ</p>
+			</div>
+		</div>
+		<div class="message_box">
+			<div class="message_area" id="true">
+				<p class="message">テキストテキストテキストテキストテキストテキスト</p>
+			</div>
+		</div>
+	</div>
+</div>
+<p class="gap" id="big"></p>
+<div class="talk_box" id="r_s">
+	<div class="icon_box">
+		<img src="" class="icon">
+	</div>
+	<div class="frame">
+		<div class="name_box">
+			<div class="name_area">
+				<p class="name">キャラ</p>
+			</div>
+		</div>
+		<div class="message_box">
+			<div class="message_area" id="true">
+				<p class="message">テキストテキストテキストテキストテキストテキスト</p>
+			</div>
+		</div>
+	</div>
+</div>
+<p class="gap" id="big"></p>
+<div class="talk_box" id="r_t">
+	<div class="icon_box">
+		<img src="" class="icon">
+	</div>
+	<div class="frame">
+		<div class="name_box">
+			<div class="name_area">
+				<p class="name">キャラ</p>
+			</div>
+		</div>
+		<div class="message_box">
+			<div class="message_area" id="true">
+				<p class="message">テキストテキストテキストテキスト</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="talk_box" id="c_c">
+	<div class="frame">
+		<div class="message_box">
+			<div class="message_area" id="false">
+				<p class="message">テキストテキストテキストテキスト</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="talk_box" id="r_r">
+	<div class="frame">
+		<div class="title_area">
+			<text class="left_line" id="l_blue">┃</text>
+			<p class="title">返信する</p>
+		</div>
+		<p class="disp_line" id="b_blue">──────────────────────</p>
+		<div class="message_box">
+			<div class="message_area" id="false">
+				<p class="message">テキストテキストテキストテキストテキストテキスト</p>
+			</div>
+			<div class="message_area" id="false">
+				<p class="message">テキストテキストテキストテキスト</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="talk_box" id="r_b">
+	<div class="frame">
+		<div class="title_area">
+			<text class="left_line" id="l_pink">┃</text>
+			<p class="title">絆イベント</p>
+		</div>
+		<p class="disp_line" id="b_pink">──────────────────────</p>
+		<div class="message_box">
+			<div class="message_area" id="false">
+				<p class="message">テキスト</p>
+			</div>
+		</div>
+	</div>
+</div>
+<p class="gap" id="big"></p>
+<div class="talk_box" id="c_p">
+	<div class="frame">
+		<div class="photo_box">
+			<div class="photo_area">
+				<img src="" class="photo">
+			</div>
+		</div>
+	</div>
+</div>-->
+<p class="gap" id="large"></p>
+				</div>
+			</div>
+			<div id="result">
+
+			</div>
+		</div>
+		
+		<div id="sub">
+			<div id="formArea">
+<div class="input_box">
+	<p class="item_name">作品名/作者名入力</p>
+	<input type="text" class="input_text" id="input_title" placeholder="タイトル">
+	<input type="text" class="input_text" id="input_author" placeholder="作者名">
+	<button class="decision" onclick="setCreater();">　　　変更　　　</button>
+</div>
+<div class="input_box">
+	<p class="item_name">生徒トーク設定</p>
+	<form id="form_student" name="students">
+ <legend>配置を選択してください。</legend>
+    <div class="input_position">
+      
+      <label><input type="radio" class="position" id="position_left" name="position" value="l_s" checked />左側</label>
+
+      
+      <label><input type="radio" class="position" id="position_right" name="position" value="r_s" />右側</label>
+    </div>
+
+	<select name="sel_school" class="selection" id="sel_school">
+		<option value="0">--------対象の所属を選択してください--------</option>
+		<option value="1">アビドス</option>
+		<option value="2">ゲヘナ</option>
+		<option value="3">ミレニアム</option>
+		<option value="4">トリニティ</option>
+		<option value="5">百鬼夜行</option>
+		<option value="6">山海経</option>
+		<option value="7">SRT</option>
+		<option value="8">アリウス</option>
+		<option value="9">ヴァルキューレ</option>
+		<option value="10">連邦生徒会</option>
+		<option value="11">シャーレ</option>
+		<option value="12">ゲマトリア</option>
+		<option value="13">モブ</option>
+		<option value="14">色彩</option>
+		<option value="15">その他</option>
+	</select>
+<select name="sel_student" class="selection" id="sel_student">
+	<option value="0">所属を選択してください</option>
+</select>
+
+<select name="sel_effect" class="selection">
+<option value="0">なにもなし</option>
+<option value="1">バグ</option>
+<option value="2">流血</option>
+<option value="3">返り血</option>
+<option value="4">致命傷</option>
+</select>
+</form>
+<canvas id="newIcon"></canvas>
+                    <label for="newChara"><font color="#0000ff"><u><h4>アイコンを指定する</h4></u></font></label><input id="newChara" name="input" type="file" accept="image/icon/" style="display: none;">
+
+<input type="text" class="input_text" id="input_student_icon" style="display: none;" placeholder="画像名：icon/..">
+
+<input type="text" class="input_text" id="input_student_name" placeholder="生徒名">
+
+<textarea class="input_textarea" id="input_student_talk" rows="3" placeholder="生徒のトーク内容"></textarea>
+
+<button class="decision" onclick="createMessage(0,true)">表示</button>
+<button class="decision" onclick="createMessage(0,false)">セリフのみ表示</button>
+	
+</div>
+<div class="input_box">
+	<p class="item_name">先生トーク設定</p>
+
+<textarea class="input_textarea" id="input_teacher_talk" rows="3" placeholder="先生のトーク内容"></textarea>
+
+<button class="decision" onclick="createMessage(1,true);">セリフ表示</button>
+</div>
+<div class="input_box">
+	<label for="input_photo"><font color="#0000ff"><u><h4>表示する画像を選ぶ</h4></u></font></label><input id="input_photo" name="input" type="file" accept="image/icon/" style="display: none;">
+</div>
+<div class="input_box">
+	<p class="item_name">灰色バー設定</p>
+
+<textarea class="input_textarea" id="input_comment" rows="3" placeholder="トーク内容"></textarea>
+
+<button class="decision" onclick="createMessage(2,false);">灰色バー表示</button>
+
+</div>
+<div class="input_box">
+	<p class="item_name">返信設定</p>
+
+<textarea class="input_textarea" id="input_reply1" rows="3" placeholder="トーク内容"></textarea>
+<textarea class="input_textarea" id="input_reply2" rows="3" placeholder="トーク内容"></textarea>
+
+<button class="decision" onclick="createMessage(3,false);">返信表示</button>
+
+</div>
+<div class="input_box">
+	<p class="item_name">絆ストーリー設定</p>
+
+<input type="text" class="input_text" id="input_bonding_name" placeholder="生徒名">
+
+<button class="decision" onclick="createMessage(4,false);">絆ストーリー表示</button>
+</div>
+<div class="input_box">
+<p class="item_name">修正</p>
+<button class="decision" onclick="deleteMessage();">　　一つ戻る　　</button>
+</div>
+</div>
+		</div>
+		<script type="text/javascript" src="talk.js" defer></script>
+	</body>
+</html>
