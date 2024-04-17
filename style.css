@@ -344,7 +344,7 @@ p {
 	left: 0;
 }
 #canvas {
-	top: 0;
+display: none;
  height: auto;
 }
 #downloadImage {
