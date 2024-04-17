@@ -338,18 +338,16 @@ p {
 	display: inline-block;
 	position: absolute;
 	width: 100%;
-	min-height: 50%;
+	height: auto;
 	text-align: center;
 	top: 0;
 	left: 0;
 }
 #canvas {
-display: none;
- height: auto;
+	display: none;
 }
 #downloadImage {
 	width: 640px;
-  height: auto;
 }
 #sub {
 	position: fixed;
