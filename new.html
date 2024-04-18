@@ -144,7 +144,7 @@
 	<p class="item_name">作品名/作者名入力</p>
 	<input type="text" class="input_text" id="input_title" placeholder="タイトル">
 	<input type="text" class="input_text" id="input_author" placeholder="作者名">
-	<button class="decision" onclick="setCreater();">　　　変更　　　</button>
+	<button class="decision" onclick="setCreater();">変更</button>
 </div>
 <div class="input_box">
 	<p class="item_name">生徒トーク設定</p>
@@ -180,7 +180,7 @@
 	<option value="0">所属を選択してください</option>
 </select>
 
-<select name="sel_effect" class="selection">
+<select name="sel_effect" class="selection" id="sel_effect">
 <option value="0">なにもなし</option>
 <option value="1">バグ</option>
 <option value="2">流血</option>
@@ -192,6 +192,7 @@
                     <label for="newChara"><font color="#0000ff"><u><h4>アイコンを指定する</h4></u></font></label><input id="newChara" name="input" type="file" accept="image/icon/" style="display: none;">
 
 <input type="text" class="input_text" id="input_student_icon" style="display: none;" placeholder="画像名：icon/..">
+<input type="text" class="input_text" id="input_effect_icon" style="display: none;" placeholder="画像名：icon/..">
 
 <input type="text" class="input_text" id="input_student_name" placeholder="生徒名">
 
