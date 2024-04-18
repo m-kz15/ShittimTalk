@@ -6,8 +6,8 @@ var output = document.getElementById('output');
 var form_s = document.forms.students;
 var select_afflication = document.getElementById("sel_school");
 var select_s = document.getElementById("sel_student");
+var select_effect = document.getElementById("sel_effect");
 var position_s = document.getElementsByName("position");
-var btn1 = document.getElementById("btn1");
 
 var affiliation_num = 0;
 var student_num = 0;
@@ -23,7 +23,8 @@ const abydos = [
 ];
 const gehena = [
     ["キャラを選択してください","",""],
-    ["ヒナ","ヒナ","./icon/Abydos/chara.png"]
+    ["ヒナ","ヒナ","./icon/Abydos/chara.png"],
+    ["ヒナ_メモリアル","ヒナ","./icon/Abydos/chara.png"]
 ];
 const millennium = [
     ["キャラを選択してください","",""],
@@ -94,6 +95,13 @@ const affiliation = [
     mobu,
     sikisai,
     hoka
+];
+const effectImage = [
+    "",
+    "./bag2.png",
+    "./.png",
+    "./.png",
+    "./.png"
 ];
 
 html2canvas(document.querySelector("#create_area"), {
@@ -172,106 +180,123 @@ function setCreater(){
     let title = document.getElementById("input_title").value;
     let name = document.getElementById("input_author").value;
 
-    document.getElementById("create_title").innerText = title;
+    document.getElementById("create_title").innerText = "作品名："+title;
     document.getElementById("creater_name").innerText = name;
 
     display();
 }
 
 function createStudent(category,flg){
-    let name = document.getElementById("input_student_name").value;
-    let icon = document.getElementById("input_student_icon").value;
-    let message = document.getElementById("input_student_talk").value;
-    if(before == name){
-        messageArray[messageIdx] = '<p class="gap" id="small"></p>';
-    }else{
-        messageArray[messageIdx] = '<p class="gap" id="big"></p>';
+    let name = document.getElementById("input_student_name");
+    let icon = document.getElementById("input_student_icon");
+    let effect = document.getElementById("input_effect_icon");
+    let message = document.getElementById("input_student_talk");
+    if(message.value != ""){
+        if(before == name.value){
+            messageArray[messageIdx] = '<p class="gap" id="small"></p>';
+        }else{
+            messageArray[messageIdx] = '<p class="gap" id="big"></p>';
+        }
+        before = name.value;
+        messageHistory[messageIdx] = name.value;
+        if(flg == true){
+            messageArray[messageIdx] += '\
+        <div class="talk_box" id="'+category+'">\n\
+            <div class="icon_box">\n\
+                <img src="'+icon.value+'" class="icon">\n\
+            </div>\n\
+            ';
+            if(effect.value != ""){
+                messageArray[messageIdx] += '\
+            <div class="icon_box">\n\
+                <img src="'+effect.value+'" class="icon">\n\
+            </div>\n\
+            ';
+            }
+            messageArray[messageIdx] += '\
+            <div class="frame">\n\
+                <div class="name_box">\n\
+                    <div class="name_area">\n\
+                        <p class="name">'+name.value+'</p>\n\
+                    </div>\n\
+                </div>\n\
+                <div class="message_box">\n\
+                    <div class="message_area" id="'+flg+'">\n\
+                        <p class="message">'+split(message.value)+'</p>\n\
+                    </div>\n\
+                </div>\n\
+            </div>\n\
+        </div>\n\
+            ';
+        }else{
+            messageArray[messageIdx] += '\
+        <div class="talk_box" id="'+category+'">\n\
+            <div class="frame">\n\
+                <div class="message_box">\n\
+                    <div class="message_area" id="'+flg+'">\n\
+                        <p class="message">'+split(message.value)+'</p>\n\
+                    </div>\n\
+                </div>\n\
+            </div>\n\
+        </div>\n\
+            ';
+        }
+        message.value = "";
+        //alert(messageArray[messageIdx]);
+        messageIdx++;
+        display();
     }
-    before = name;
-    messageHistory[messageIdx] = name;
-    if(flg == true){
-        messageArray[messageIdx] += '\
-    <div class="talk_box" id="'+category+'">\n\
-        <div class="icon_box">\n\
-            <img src="'+icon+'" class="icon">\n\
-        </div>\n\
-        <div class="frame">\n\
-            <div class="name_box">\n\
-                <div class="name_area">\n\
-                    <p class="name">'+name+'</p>\n\
-                </div>\n\
-            </div>\n\
-            <div class="message_box">\n\
-                <div class="message_area" id="'+flg+'">\n\
-                    <p class="message">'+split(message)+'</p>\n\
-                </div>\n\
-            </div>\n\
-        </div>\n\
-    </div>\n\
-        ';
-    }else{
-        messageArray[messageIdx] += '\
-    <div class="talk_box" id="'+category+'">\n\
-        <div class="frame">\n\
-            <div class="message_box">\n\
-                <div class="message_area" id="'+flg+'">\n\
-                    <p class="message">'+split(message)+'</p>\n\
-                </div>\n\
-            </div>\n\
-        </div>\n\
-    </div>\n\
-        ';
-    }
-    //alert(messageArray[messageIdx]);
-    messageIdx++;
-    display();
+    
 }
 
 function createTeacher(category, flg){
     let message = document.getElementById("input_teacher_talk").value;
-    if(before == "teacher"){
-        messageArray[messageIdx] = '<p class="gap" id="small"></p>';
-    }else{
-        messageArray[messageIdx] = '<p class="gap" id="big"></p>';
-    }
-    before = "teacher";
-    messageHistory[messageIdx] = "teachar";
-    messageArray[messageIdx] += '\
-    <div class="talk_box" id="'+category+'">\n\
-        <div class="frame">\n\
-            <div class="message_box">\n\
-                <div class="message_area" id="'+flg+'">\n\
-                    <p class="message">'+split(message)+'</p>\n\
+    if(message != ""){
+        if(before == "teacher"){
+            messageArray[messageIdx] = '<p class="gap" id="small"></p>';
+        }else{
+            messageArray[messageIdx] = '<p class="gap" id="big"></p>';
+        }
+        before = "teacher";
+        messageHistory[messageIdx] = "teachar";
+        messageArray[messageIdx] += '\
+        <div class="talk_box" id="'+category+'">\n\
+            <div class="frame">\n\
+                <div class="message_box">\n\
+                    <div class="message_area" id="'+flg+'">\n\
+                        <p class="message">'+split(message)+'</p>\n\
+                    </div>\n\
                 </div>\n\
             </div>\n\
         </div>\n\
-    </div>\n\
-        ';
-    
-    messageIdx++;
-    display();
+            ';
+        
+        messageIdx++;
+        display();
+    }
 }
 
 function createComment(category, flg){
     let message = document.getElementById("input_comment").value;
-
-    before = "comment";
-    messageHistory[messageIdx] = "comment";
-    messageArray[messageIdx] = '<p class="gap" id="big"></p>';
-    messageArray[messageIdx] += '\
-    <div class="talk_box" id="'+category+'">\n\
-        <div class="frame">\n\
-            <div class="message_box">\n\
-                <div class="message_area" id="'+flg+'">\n\
-                    <p class="message">'+split(message)+'</p>\n\
+    if(message != ""){
+        before = "comment";
+        messageHistory[messageIdx] = "comment";
+        messageArray[messageIdx] = '<p class="gap" id="big"></p>';
+        messageArray[messageIdx] += '\
+        <div class="talk_box" id="'+category+'">\n\
+            <div class="frame">\n\
+                <div class="message_box">\n\
+                    <div class="message_area" id="'+flg+'">\n\
+                        <p class="message">'+split(message)+'</p>\n\
+                    </div>\n\
                 </div>\n\
             </div>\n\
         </div>\n\
-    </div>\n\
-    ';
+        ';
 
-    messageIdx++;
-    display();
+        messageIdx++;
+        display();
+    }
 }
 
 function createReply(category, flg){
@@ -279,17 +304,18 @@ function createReply(category, flg){
     let message2 = document.getElementById("input_reply2").value;
     let replyFlg = false;
 
-    before = "reply";
-    messageHistory[messageIdx] = "reply";
-    if(message1 == "" && message2 != ""){
-        replyFlg = true;
-        message1 = message2;
-    }else if(message1 != "" && message2 == ""){
-        replyFlg = true;
-    }
+    if(!(message1 == "" && message2 == "")){
+        before = "reply";
+        messageHistory[messageIdx] = "reply";
+        if(message1 == "" && message2 != ""){
+            replyFlg = true;
+            message1 = message2;
+        }else if(message1 != "" && message2 == ""){
+            replyFlg = true;
+        }
 
-    messageArray[messageIdx] = '<p class="gap" id="big"></p>';
-    messageArray[messageIdx] += '\
+        messageArray[messageIdx] = '<p class="gap" id="big"></p>';
+        messageArray[messageIdx] += '\
     <div class="talk_box" id="'+category+'">\n\
 	<div class="frame">\n\
 		<div class="title_area">\n\
@@ -300,14 +326,14 @@ function createReply(category, flg){
 		<div class="message_box">\n\
             <div class="shadow">\n\
     ';
-    if(replyFlg){
-        messageArray[messageIdx] += '\
+        if(replyFlg){
+            messageArray[messageIdx] += '\
                 <div class="message_area" id="'+flg+'">\n\
 				    <p class="message">'+split(message1)+'</p>\n\
 		        </div>\n\
         ';
-    }else{
-        messageArray[messageIdx] += '\
+        }else{
+            messageArray[messageIdx] += '\
                 <div class="message_area" id="'+flg+'">\n\
 				    <p class="message">'+split(message1)+'</p>\n\
 		        </div>\n\
@@ -317,21 +343,25 @@ function createReply(category, flg){
 				    <p class="message">'+split(message2)+'</p>\n\
 		        </div>\n\
         ';
-    }
-    messageArray[messageIdx] += '\
+        }
+        messageArray[messageIdx] += '\
             </div>\n\
 		</div>\n\
 	</div>\n\
 </div>\n\
     ';
-    messageIdx++;
-    display();
+        messageIdx++;
+        display();
+    }
+
+    
 }
 
 function createBonding(category, flg){
     let message = document.getElementById("input_bonding_name").value;
 
-    before = "bonding";
+    if(message != ""){
+        before = "bonding";
     messageHistory[messageIdx] = "bonding";
     messageArray[messageIdx] = '<p class="gap" id="big"></p>';
     messageArray[messageIdx] += '\
@@ -354,6 +384,9 @@ function createBonding(category, flg){
     ';
     messageIdx++;
     display();
+    }
+
+    
 }
 
 function deleteMessage(){
@@ -445,6 +478,13 @@ select_afflication.onchange = function(e){
     }
 }
 /*生徒を選択すると自動入力をする関数*/
+select_effect.onchange = function(e){
+    var result = e.target.value;
+    var resultValue = parseFloat(result);
+
+    document.getElementById('input_effect_icon').value = effectImage[resultValue];
+}
+/*生徒を選択すると自動入力をする関数*/
 select_s.onchange = function(e){
     var result = e.target.value;
     var resultValue = parseFloat(result);
@@ -492,6 +532,35 @@ document.querySelector('#input_photo').addEventListener('change', (event) => {
 function split(target){
 
     let textarea = target;
+    textarea = splitCheck(textarea);
+    textarea = splitColor(textarea);
+    textarea = splitSize(textarea);
 
     return textarea.split('\n').join('<br>');
+}
+function splitColor(target){
+
+    let textarea = target;
+    textarea = textarea.split('|Red|').join('<font color=#ff0000>');
+    textarea = textarea.split('|Green|').join('<font color=#00ff00>');
+    textarea = textarea.split('|Blue|').join('<font color=#0000ff>');
+    
+    return textarea.split('|End|').join('</font>');
+}
+function splitCheck(target){
+
+    let textarea = target;
+    textarea = textarea.split('<').join('＜');
+    textarea = textarea.split('>').join('＞');
+    textarea = textarea.split('\\').join('￥');
+    
+    return textarea;
+}
+function splitSize(target){
+
+    let textarea = target;
+    textarea = textarea.split('{Big}').join('<font size="+3">');
+    textarea = textarea.split('{Large}').join('<font size="+5">');
+    
+    return textarea.split('{End}').join('</font>');
 }
