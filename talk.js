@@ -513,7 +513,8 @@ document.querySelector('#input_photo').addEventListener('change', (event) => {
     }
 
     reader.addEventListener('load', function() {
-        messageArray[messageIdx] = '\
+        messageArray[messageIdx] = '<p class="gap" id="big"></p>';
+        messageArray[messageIdx] += '\
 <div class="talk_box" id="c_p">\n\
 	<div class="frame">\n\
 		<div class="photo_box">\n\
@@ -523,6 +524,7 @@ document.querySelector('#input_photo').addEventListener('change', (event) => {
         </div>\n\
 	</div>\n\
 </div>\n';
+        messageArray[messageIdx] += '<p class="gap" id="big"></p>';
         messageIdx++;
         display();
         
