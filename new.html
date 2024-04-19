@@ -162,7 +162,7 @@
 					</div>
 					<br>
 					<select name="sel_school" class="selection" id="sel_school">
-						<option value="0">--------対象の所属を選択してください--------</option>
+						<option value="0">所属未選択</option>
 						<option value="1">アビドス</option>
 						<option value="2">ゲヘナ</option>
 						<option value="3">ミレニアム</option>
@@ -179,8 +179,9 @@
 						<option value="14">色彩</option>
 						<option value="15">その他</option>
 					</select>
+					<br>
 					<select name="sel_student" class="selection" id="sel_student">
-						<option value="0">所属を選択してください</option>
+						<option value="0">所属が未選択です</option>
 					</select>
 
 					<select name="sel_effect" class="selection" id="sel_effect">
@@ -200,7 +201,18 @@
 				<input type="text" class="input_text" id="input_student_name" placeholder="生徒名">
 
 				<textarea class="input_textarea" id="input_student_talk" rows="3" placeholder="生徒のトーク内容"></textarea>
-
+				<details class="colors_area">
+					<summary>装飾機能一覧</summary>
+					<button class="input_color" id="red" onclick="inputColor('input_student_talk','Red');">赤</button>
+					<button class="input_color" id="blue" onclick="inputColor('input_student_talk','Blue');">青</button>
+					<button class="input_color" id="green" onclick="inputColor('input_student_talk','Green');">緑</button>
+					<button class="input_color" id="pink" onclick="inputColor('input_student_talk','Love');">照れ</button>
+					<button class="input_color" id="blood" onclick="inputColor('input_student_talk','Blood');">血</button>
+					<button class="input_color" id="black" onclick="inputColor('input_student_talk','Black');">ゲマトリア</button>
+					<br>
+					<button class="input_size" onclick="inputSize('input_student_talk','Big');">大</button>
+					<button class="input_size" onclick="inputSize('input_student_talk','Large');">特大</button>
+				</details>
 				<button class="decision" onclick="createMessage(0,true)">表示</button>
 				<button class="decision" onclick="createMessage(0,false)">セリフのみ表示</button>
 					
@@ -209,6 +221,18 @@
 			<div class="input_box">
 				<p class="item_name">先生トーク設定</p>
 				<textarea class="input_textarea" id="input_teacher_talk" rows="3" placeholder="先生のトーク内容"></textarea>
+				<details class="colors_area">
+					<summary>装飾機能一覧</summary>
+					<button class="input_color" id="red" onclick="inputColor('input_teacher_talk','Red');">赤</button>
+					<button class="input_color" id="blue" onclick="inputColor('input_teacher_talk','Blue');">青</button>
+					<button class="input_color" id="green" onclick="inputColor('input_teacher_talk','Green');">緑</button>
+					<button class="input_color" id="pink" onclick="inputColor('input_teacher_talk','Love');">照れ</button>
+					<button class="input_color" id="blood" onclick="inputColor('input_teacher_talk','Blood');">血</button>
+					<button class="input_color" id="black" onclick="inputColor('input_teacher_talk','Black');">ゲマトリア</button>
+					<br>
+					<button class="input_size" onclick="inputSize('input_teacher_talk','Big');">大</button>
+					<button class="input_size" onclick="inputSize('input_teacher_talk','Large');">特大</button>
+				</details>
 				<button class="decision" onclick="createMessage(1,true);">セリフ表示</button>
 			</div>
 
@@ -220,13 +244,49 @@
 			<div class="input_box">
 				<p class="item_name">コメント設定</p>
 				<textarea class="input_textarea" id="input_comment" rows="3" placeholder="コメント内容"></textarea>
+				<details class="colors_area">
+					<summary>装飾機能一覧</summary>
+					<button class="input_color" id="red" onclick="inputColor('input_comment','Red');">赤</button>
+					<button class="input_color" id="blue" onclick="inputColor('input_comment','Blue');">青</button>
+					<button class="input_color" id="green" onclick="inputColor('input_comment','Green');">緑</button>
+					<button class="input_color" id="pink" onclick="inputColor('input_comment','Love');">照れ</button>
+					<button class="input_color" id="blood" onclick="inputColor('input_comment','Blood');">血</button>
+					<button class="input_color" id="black" onclick="inputColor('input_comment','Black');">ゲマトリア</button>
+					<br>
+					<button class="input_size" onclick="inputSize('input_comment','Big');">大</button>
+					<button class="input_size" onclick="inputSize('input_comment','Large');">特大</button>
+				</details>
 				<button class="decision" onclick="createMessage(2,false);">コメント表示</button>
 			</div>
 			
 			<div class="input_box">
 				<p class="item_name">返信設定</p>
 				<textarea class="input_textarea" id="input_reply1" rows="3" placeholder="返信内容"></textarea>
+				<details class="colors_area">
+					<summary>装飾機能一覧</summary>
+					<button class="input_color" id="red" onclick="inputColor('input_reply1','Red');">赤</button>
+					<button class="input_color" id="blue" onclick="inputColor('input_reply1','Blue');">青</button>
+					<button class="input_color" id="green" onclick="inputColor('input_reply1','Green');">緑</button>
+					<button class="input_color" id="pink" onclick="inputColor('input_reply1','Love');">照れ</button>
+					<button class="input_color" id="blood" onclick="inputColor('input_reply1','Blood');">血</button>
+					<button class="input_color" id="black" onclick="inputColor('input_reply1','Black');">ゲマトリア</button>
+					<br>
+					<button class="input_size" onclick="inputSize('input_reply1','Big');">大</button>
+					<button class="input_size" onclick="inputSize('input_reply1','Large');">特大</button>
+				</details>
 				<textarea class="input_textarea" id="input_reply2" rows="3" placeholder="返信内容"></textarea>
+				<details class="colors_area">
+					<summary>装飾機能一覧</summary>
+					<button class="input_color" id="red" onclick="inputColor('input_reply2','Red');">赤</button>
+					<button class="input_color" id="blue" onclick="inputColor('input_reply2','Blue');">青</button>
+					<button class="input_color" id="green" onclick="inputColor('input_reply2','Green');">緑</button>
+					<button class="input_color" id="pink" onclick="inputColor('input_reply2','Love');">照れ</button>
+					<button class="input_color" id="blood" onclick="inputColor('input_reply2','Blood');">血</button>
+					<button class="input_color" id="black" onclick="inputColor('input_reply2','Black');">ゲマトリア</button>
+					<br>
+					<button class="input_size" onclick="inputSize('input_reply2','Big');">大</button>
+					<button class="input_size" onclick="inputSize('input_reply2','Large');">特大</button>
+				</details>
 				<button class="decision" onclick="createMessage(3,false);">返信表示</button>
 			</div>
 
