@@ -332,7 +332,7 @@ function createReply(category, flg){
 			<text class="left_line" id="l_blue">┃</text>\n\
 			<p class="title">返信する</p>\n\
 		</div>\n\
-		<p class="disp_line" id="b_blue">──────────────────</p>\n\
+		<p class="disp_line" id="b_blue">───────────────────</p>\n\
 		<div class="message_box">\n\
             <div class="shadow">\n\
     ';
@@ -384,7 +384,7 @@ function createBonding(category, flg){
 			<text class="left_line" id="l_pink">┃</text>\n\
 			<p class="title">絆イベント</p>\n\
 		</div>\n\
-		<p class="disp_line" id="b_pink">──────────────────</p>\n\
+		<p class="disp_line" id="b_pink">───────────────────</p>\n\
 		<div class="message_box">\n\
             <div class="shadow">\n\
                 <div class="message_area" id="'+flg+'">\n\
@@ -395,7 +395,6 @@ function createBonding(category, flg){
 	</div>\n\
 </div>\n\
     ';
-        message.value = "";
 
         messageIdx++;
         display();
@@ -570,6 +569,7 @@ function splitColor(target){
     textarea = textarea.split('|Love|').join('<font color=#ffefef style="text-shadow: 0vw 0vw 1vw #f99, 0vw 0vw 2vw #f99;">');
     textarea = textarea.split('|Blood|').join('<font color=#dd0000 style="text-shadow: 3px 3px 20px #900, -3px -3px 20px #900, -3px 3px 20px #900, 3px -3px 20px #900;">');
     textarea = textarea.split('|Black|').join('<font color=#000 style="text-shadow: 0 0 0.25em #fff, 0 0 0.5em #fff;">');
+    textarea = textarea.split('|Glitch|').join('<font color=#fff style="text-shadow: 2.5px 0.5px 0.5px rgba(255, 0, 255, .8), -2.5px -0.5px 0.5px rgba(0, 255, 255, .8)">');
     
     return textarea.split('|End|').join('</font>');
 }
