@@ -214,7 +214,7 @@
 					</select>
 				</form>
 				<canvas id="newIcon"></canvas>
-				<label for="newChara"><font color="#0000ff"><u><h4>アイコンを指定する</h4></u></font></label><input id="newChara" name="input" type="file" accept="image/icon/" style="display: none;">
+				<label for="newChara"><font color="#0000ff"><u><h3>アイコンを指定する</h3></u></font></label><input id="newChara" name="input" type="file" accept="image/icon/" style="display: none;">
 
 				<input type="text" class="input_text" id="input_student_icon" style="display: none;" placeholder="画像名：icon/..">
 				<input type="text" class="input_text" id="input_effect_icon" style="display: none;" placeholder="画像名：icon/..">
@@ -265,7 +265,7 @@
 
 			<div class="input_box">
 				<p class="item_name">写真設定</p>
-				<label for="input_photo"><font color="#0000ff"><u><h4>表示する画像を選ぶ</h4></u></font></label><input id="input_photo" name="input" type="file" accept="image/icon/" style="display: none;">
+				<label for="input_photo"><font color="#0000ff"><u><h2>表示する画像を選ぶ</h2></u></font></label><input id="input_photo" name="input" type="file" accept="image/icon/" style="display: none;">
 			</div>
 
 			<div class="input_box">
@@ -290,35 +290,31 @@
 			
 			<div class="input_box">
 				<p class="item_name">返信設定</p>
-				<textarea class="input_textarea" id="input_reply1" rows="3" placeholder="返信内容"></textarea>
-				<details class="colors_area">
+				<textarea class="input_textarea" id="input_reply1" rows="3" placeholder="返信内容(1)"></textarea>
+				<textarea class="input_textarea" id="input_reply2" rows="3" placeholder="返信内容(2)"></textarea>
+				<details class="colors_area" id="reply_colors">
 					<summary>装飾機能一覧</summary>
-					<button class="input_color" id="red" onclick="inputColor('input_reply1','Red');">赤</button>
-					<button class="input_color" id="blue" onclick="inputColor('input_reply1','Blue');">青</button>
-					<button class="input_color" id="green" onclick="inputColor('input_reply1','Green');">緑</button>
-					<button class="input_color" id="pink" onclick="inputColor('input_reply1','Love');">照れ</button>
-					<button class="input_color" id="blood" onclick="inputColor('input_reply1','Blood');">血</button>
-					<button class="input_color" id="black" onclick="inputColor('input_reply1','Black');">ゲマトリア</button>
-					<button class="input_color" id="glitch" onclick="inputColor('input_reply1','Glitch');">グリッチ</button>
-					<button class="input_color" id="vibrate" onclick="inputColor('input_reply1','Vibrate');">震え</button>
+					<button class="input_color" id="red" onclick="inputColor('input_reply1','Red');">赤(1)</button>
+					<button class="input_color" id="red" onclick="inputColor('input_reply2','Red');">赤(2)</button>
+					<button class="input_color" id="blue" onclick="inputColor('input_reply1','Blue');">青(1)</button>
+					<button class="input_color" id="blue" onclick="inputColor('input_reply2','Blue');">青(2)</button>
+					<button class="input_color" id="green" onclick="inputColor('input_reply1','Green');">緑(1)</button>
+					<button class="input_color" id="green" onclick="inputColor('input_reply2','Green');">緑(2)</button>
+					<button class="input_color" id="pink" onclick="inputColor('input_reply1','Love');">照れ(1)</button>
+					<button class="input_color" id="pink" onclick="inputColor('input_reply2','Love');">照れ(2)</button>
+					<button class="input_color" id="blood" onclick="inputColor('input_reply1','Blood');">血(1)</button>
+					<button class="input_color" id="blood" onclick="inputColor('input_reply2','Blood');">血(2)</button>
+					<button class="input_color" id="black" onclick="inputColor('input_reply1','Black');">ゲマトリア(1)</button>
+					<button class="input_color" id="black" onclick="inputColor('input_reply2','Black');">ゲマトリア(2)</button>
+					<button class="input_color" id="glitch" onclick="inputColor('input_reply1','Glitch');">グリッチ(1)</button>
+					<button class="input_color" id="glitch" onclick="inputColor('input_reply2','Glitch');">グリッチ(2)</button>
+					<button class="input_color" id="vibrate" onclick="inputColor('input_reply1','Vibrate');">震え(1)</button>
+					<button class="input_color" id="vibrate" onclick="inputColor('input_reply2','Vibrate');">震え(2)</button>
 					<br>
-					<button class="input_size" onclick="inputSize('input_reply1','Big');">大</button>
-					<button class="input_size" onclick="inputSize('input_reply1','Large');">特大</button>
-				</details>
-				<textarea class="input_textarea" id="input_reply2" rows="3" placeholder="返信内容"></textarea>
-				<details class="colors_area">
-					<summary>装飾機能一覧</summary>
-					<button class="input_color" id="red" onclick="inputColor('input_reply2','Red');">赤</button>
-					<button class="input_color" id="blue" onclick="inputColor('input_reply2','Blue');">青</button>
-					<button class="input_color" id="green" onclick="inputColor('input_reply2','Green');">緑</button>
-					<button class="input_color" id="pink" onclick="inputColor('input_reply2','Love');">照れ</button>
-					<button class="input_color" id="blood" onclick="inputColor('input_reply2','Blood');">血</button>
-					<button class="input_color" id="black" onclick="inputColor('input_reply2','Black');">ゲマトリア</button>
-					<button class="input_color" id="glitch" onclick="inputColor('input_reply2','Glitch');">グリッチ</button>
-					<button class="input_color" id="vibrate" onclick="inputColor('input_reply2','Vibrate');">震え</button>
-					<br>
-					<button class="input_size" onclick="inputSize('input_reply2','Big');">大</button>
-					<button class="input_size" onclick="inputSize('input_reply2','Large');">特大</button>
+					<button class="input_size" onclick="inputSize('input_reply1','Big');">大(1)</button>
+					<button class="input_size" onclick="inputSize('input_reply2','Big');">大(2)</button>
+					<button class="input_size" onclick="inputSize('input_reply1','Large');">特大(1)</button>
+					<button class="input_size" onclick="inputSize('input_reply2','Large');">特大(2)</button>
 				</details>
 				<button class="decision" onclick="createMessage(3,false);">返信表示</button>
 			</div>

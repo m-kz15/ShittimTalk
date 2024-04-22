@@ -567,7 +567,7 @@ function splitColor(target){
     textarea = textarea.split('|Blue|').join('<font color=#0000ff>');
     textarea = textarea.split('|Love|').join('<font color=#ffefef style="text-shadow: 0vw 0vw 1vw #f99, 0vw 0vw 2vw #f99;">');
     textarea = textarea.split('|Blood|').join('<font color=#dd0000 style="text-shadow: 3px 3px 20px #900, -3px -3px 20px #900, -3px 3px 20px #900, 3px -3px 20px #900;">');
-    textarea = textarea.split('|Black|').join('<font color=#000 style="text-shadow: 0 0 0.5em #fff, 0 0 1em #fff;">');
+    textarea = textarea.split('|Black|').join('<font color=#000 style="text-shadow: 0 0 0.1em #fff, 0 0 0.2em #fff, 0 0 1em #fff, 0 0 1.5em #fff;">');
     textarea = textarea.split('|Glitch|').join('<font color=#fff style="text-shadow: 2.5px 0.5px 0.5px rgba(255, 0, 255, .8), -2.5px -0.5px 0.5px rgba(0, 255, 255, .8)">');
     textarea = textarea.split('|Vibrate|').join('<font color=#fff style="text-shadow: 2.5px 0.1em rgba(255, 255, 255, .4), -2.5px -0.2em rgba(200, 200, 200, .4), 0.2em 0.05em rgba(255, 255, 255, .4)">');
     
