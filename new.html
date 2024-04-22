@@ -23,8 +23,8 @@
 					</div>
 					<div class="header_bottom">
 						<session class="header_frame">
-							<p id="create_title">サブタイトル</p>
-							<p id="creater_name">作者名</p>
+							<p id="create_title">作品名：</p>
+							<p id="creater_name">作者名：</p>
 						</session>
 					</div>
 				</div>
@@ -144,6 +144,27 @@
 		</div>
 		<!-- データ入力画面 -->
 		<div id="sub">
+			<div class="input_box">
+				<details>
+					<summary>保存・復元・完成など</summary>
+					<div class="fileOption">
+						<a id="save" download="incomplete.txt"><font color=#5058ff><u>セーブ</u></font></a>
+					</div>
+					<div class="fileOption">
+						<label for="load"><font color=#5058ff>復元</font></label>
+						<input accept=".txt" type="file" id="load" name="myfile" style="display: none;"></input>
+					</div>
+					<div class="fileOption">
+						<font color=#5058ff><a href="" id="ss" style="pointer-events:auto;">完成</a></font>
+					</div>
+					
+				
+				
+				<br>
+				
+				</details>
+				
+			</div>
 			
 			<div class="input_box">
 				<p class="item_name">作品名/作者名入力</p>
@@ -209,9 +230,13 @@
 					<button class="input_color" id="pink" onclick="inputColor('input_student_talk','Love');">照れ</button>
 					<button class="input_color" id="blood" onclick="inputColor('input_student_talk','Blood');">血</button>
 					<button class="input_color" id="black" onclick="inputColor('input_student_talk','Black');">ゲマトリア</button>
+					<button class="input_color" id="glitch" onclick="inputColor('input_student_talk','Glitch');">グリッチ</button>
+					<button class="input_color" id="vibrate" onclick="inputColor('input_student_talk','Vibrate');">震え</button>
 					<br>
 					<button class="input_size" onclick="inputSize('input_student_talk','Big');">大</button>
 					<button class="input_size" onclick="inputSize('input_student_talk','Large');">特大</button>
+					<br>
+					
 				</details>
 				<button class="decision" onclick="createMessage(0,true)">表示</button>
 				<button class="decision" onclick="createMessage(0,false)">セリフのみ表示</button>
@@ -229,6 +254,8 @@
 					<button class="input_color" id="pink" onclick="inputColor('input_teacher_talk','Love');">照れ</button>
 					<button class="input_color" id="blood" onclick="inputColor('input_teacher_talk','Blood');">血</button>
 					<button class="input_color" id="black" onclick="inputColor('input_teacher_talk','Black');">ゲマトリア</button>
+					<button class="input_color" id="glitch" onclick="inputColor('input_teacher_talk','Glitch');">グリッチ</button>
+					<button class="input_color" id="vibrate" onclick="inputColor('input_teacher_talk','Vibrate');">震え</button>
 					<br>
 					<button class="input_size" onclick="inputSize('input_teacher_talk','Big');">大</button>
 					<button class="input_size" onclick="inputSize('input_teacher_talk','Large');">特大</button>
@@ -252,6 +279,8 @@
 					<button class="input_color" id="pink" onclick="inputColor('input_comment','Love');">照れ</button>
 					<button class="input_color" id="blood" onclick="inputColor('input_comment','Blood');">血</button>
 					<button class="input_color" id="black" onclick="inputColor('input_comment','Black');">ゲマトリア</button>
+					<button class="input_color" id="glitch" onclick="inputColor('input_comment','Glitch');">グリッチ</button>
+					<button class="input_color" id="vibrate" onclick="inputColor('input_comment','Vibrate');">震え</button>
 					<br>
 					<button class="input_size" onclick="inputSize('input_comment','Big');">大</button>
 					<button class="input_size" onclick="inputSize('input_comment','Large');">特大</button>
@@ -270,6 +299,8 @@
 					<button class="input_color" id="pink" onclick="inputColor('input_reply1','Love');">照れ</button>
 					<button class="input_color" id="blood" onclick="inputColor('input_reply1','Blood');">血</button>
 					<button class="input_color" id="black" onclick="inputColor('input_reply1','Black');">ゲマトリア</button>
+					<button class="input_color" id="glitch" onclick="inputColor('input_reply1','Glitch');">グリッチ</button>
+					<button class="input_color" id="vibrate" onclick="inputColor('input_reply1','Vibrate');">震え</button>
 					<br>
 					<button class="input_size" onclick="inputSize('input_reply1','Big');">大</button>
 					<button class="input_size" onclick="inputSize('input_reply1','Large');">特大</button>
@@ -283,6 +314,8 @@
 					<button class="input_color" id="pink" onclick="inputColor('input_reply2','Love');">照れ</button>
 					<button class="input_color" id="blood" onclick="inputColor('input_reply2','Blood');">血</button>
 					<button class="input_color" id="black" onclick="inputColor('input_reply2','Black');">ゲマトリア</button>
+					<button class="input_color" id="glitch" onclick="inputColor('input_reply2','Glitch');">グリッチ</button>
+					<button class="input_color" id="vibrate" onclick="inputColor('input_reply2','Vibrate');">震え</button>
 					<br>
 					<button class="input_size" onclick="inputSize('input_reply2','Big');">大</button>
 					<button class="input_size" onclick="inputSize('input_reply2','Large');">特大</button>

@@ -31,60 +31,60 @@ const abydos = [
 ];
 const gehena = [
     ["キャラ未選択","",""],
-    ["ヒナ","ヒナ","./icon/Abydos/chara.webp"],
-    ["ヒナ_メモリアル","ヒナ","./icon/Abydos/chara.webp"]
+    ["ヒナ","ヒナ","./icon/Gehena/chara.webp"],
+    ["ヒナ_メモリアル","ヒナ","./icon/Gehena/chara.webp"]
 ];
 const millennium = [
     ["キャラ未選択","",""],
-    ["ノア","ノア","./icon/Abydos/chara.webp"]
+    ["ノア","ノア","./icon/Millennium/chara.webp"]
 ];
 const trinity = [
     ["キャラ未選択","",""],
-    ["ナギサ","ナギサ","./icon/Abydos/chara.webp"]
+    ["ナギサ","ナギサ","./icon/Trinity/chara.webp"]
 ];
 const hyakki = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/hyakki/chara.webp"]
 ];
 const sankai = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/Sankai_sutra/chara.webp"]
 ];
 const srt = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/SRT/chara.webp"]
 ];
 const alius = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/Alius/chara.webp"]
 ];
-const varru = [
+const valkure = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/Valkure/chara.webp"]
 ];
 const renpou = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/Renpou/chara.webp"]
 ];
-const syare = [
+const schale = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/Schale/chara.webp"]
 ];
-const gema = [
+const gematria = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/Gematria/chara.webp"]
 ];
-const mobu = [
+const mob = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/Mob/chara.webp"]
 ];
-const sikisai = [
+const hue = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/Hue/chara.webp"]
 ];
-const hoka = [
+const another = [
     ["キャラ未選択","",""],
-    ["未実装","",""]
+    ["未実装","","./icon/Another/chara.webp"]
 ];
 const affiliation = [
     not_sel,
@@ -96,13 +96,13 @@ const affiliation = [
     sankai,
     srt,
     alius,
-    varru,
+    valkure,
     renpou,
-    syare,
-    gema,
-    mobu,
-    sikisai,
-    hoka
+    schale,
+    gematria,
+    mob,
+    hue,
+    another
 ];
 const effectImage = [
     "",
@@ -121,8 +121,6 @@ html2canvas(document.querySelector("#create_area"), {
     scale: 2,
 }).then(canvas => {
     document.getElementById('result').appendChild(canvas).setAttribute("id", "canvas");
-    /*document.getElementById('ss').setAttribute("href", canvas.toDataURL());
-    document.getElementById('ss').setAttribute("download", "sample.png");*/
     var viewImage = document.createElement('img');
     viewImage.setAttribute("id", "downloadImage");
     document.getElementById('result').appendChild(viewImage);
@@ -141,8 +139,8 @@ function setCanvas(){
         document.getElementById('downloadImage').remove();
         document.getElementById('canvas').remove();
         document.getElementById('result').appendChild(canvas).setAttribute("id", "canvas");
-        /*document.getElementById('ss').setAttribute("href", canvas.toDataURL());
-        document.getElementById('ss').setAttribute("download", "sample.png");*/
+        document.getElementById('ss').setAttribute("href", canvas.toDataURL());
+        document.getElementById('ss').setAttribute("download", "sample.png");
         //alert(document.getElementById('ss').href)
         var viewImage = document.createElement('img');
         viewImage.setAttribute("id", "downloadImage");
@@ -200,13 +198,13 @@ function createStudent(category,flg){
     let effect = document.getElementById("input_effect_icon");
     let message = document.getElementById("input_student_talk");
     if(message.value != ""){
-        if(before == name.value){
+        if(before == category+":"+name.value){
             messageArray[messageIdx] = '<p class="gap" id="small"></p>';
         }else{
             messageArray[messageIdx] = '<p class="gap" id="big"></p>';
         }
-        before = name.value;
-        messageHistory[messageIdx] = name.value;
+        before = category+":"+name.value;
+        messageHistory[messageIdx] = category+":"+name.value;
         if(flg == true){
             messageArray[messageIdx] += '\
         <div class="talk_box" id="'+category+'">\n\
@@ -529,7 +527,7 @@ document.querySelector('#input_photo').addEventListener('change', (event) => {
     }
 
     reader.addEventListener('load', function() {
-        messageArray[messageIdx] = '<p class="gap" id="big"></p>';
+        messageArray[messageIdx] = '<p class="gap" id="large"></p>';
         messageArray[messageIdx] += '\
 <div class="talk_box" id="c_p">\n\
 	<div class="frame">\n\
@@ -541,6 +539,7 @@ document.querySelector('#input_photo').addEventListener('change', (event) => {
 	</div>\n\
 </div>\n';
         messageArray[messageIdx] += '<p class="gap" id="big"></p>';
+        messageArray[messageIdx] += '<p class="gap" id="small"></p>';
         
         messageIdx++;
         display();
@@ -568,8 +567,9 @@ function splitColor(target){
     textarea = textarea.split('|Blue|').join('<font color=#0000ff>');
     textarea = textarea.split('|Love|').join('<font color=#ffefef style="text-shadow: 0vw 0vw 1vw #f99, 0vw 0vw 2vw #f99;">');
     textarea = textarea.split('|Blood|').join('<font color=#dd0000 style="text-shadow: 3px 3px 20px #900, -3px -3px 20px #900, -3px 3px 20px #900, 3px -3px 20px #900;">');
-    textarea = textarea.split('|Black|').join('<font color=#000 style="text-shadow: 0 0 0.25em #fff, 0 0 0.5em #fff;">');
+    textarea = textarea.split('|Black|').join('<font color=#000 style="text-shadow: 0 0 0.5em #fff, 0 0 1em #fff;">');
     textarea = textarea.split('|Glitch|').join('<font color=#fff style="text-shadow: 2.5px 0.5px 0.5px rgba(255, 0, 255, .8), -2.5px -0.5px 0.5px rgba(0, 255, 255, .8)">');
+    textarea = textarea.split('|Vibrate|').join('<font color=#fff style="text-shadow: 2.5px 0.1em rgba(255, 255, 255, .4), -2.5px -0.2em rgba(200, 200, 200, .4), 0.2em 0.05em rgba(255, 255, 255, .4)">');
     
     return textarea.split('|End|').join('</font>');
 }
@@ -593,3 +593,23 @@ function splitSize(target){
     
     return textarea.split('{End}').join('</font>');
 }
+window.onbeforeunload = function () {
+    return "";
+}
+document.getElementById('save').addEventListener('click', function() {
+    const blob = new Blob([alldata], {
+        "type": "text/plain"
+    });
+    document.getElementById('save').href = window.URL.createObjectURL(blob);
+})
+document.getElementById('load').addEventListener('change', function(e) {
+    var result = e.target.files[0];
+    var reader = new FileReader();
+    reader.readAsText(result);
+    reader.addEventListener('load', function() {
+        messageIdx = 0;
+        messageArray[messageIdx] = reader.result;
+        display();
+        messageIdx++;
+    })
+})
