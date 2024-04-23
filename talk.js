@@ -18,73 +18,73 @@ const not_sel = [
 ];
 const abydos = [
     ["キャラ未選択","",""],
-    ["ホシノ","ホシノ","./icon/Abydos/hoshino01.webp"],
-    ["ホシノ_メモリアル","ホシノ","./icon/Abydos/hoshino02.webp"],
-    ["シロコ","シロコ","./icon/Abydos/shiroko01.webp"],
-    ["シロコ_メモリアル","シロコ","./icon/Abydos/shiroko02.webp"],
-    ["ノノミ","ノノミ","./icon/Abydos/nonomi01.webp"],
-    ["ノノミ_メモリアル","ノノミ","./icon/Abydos/nonomi02.webp"],
-    ["セリカ","セリカ","./icon/Abydos/serika01.webp"],
-    ["セリカ_メモリアル","セリカ","./icon/Abydos/serika02.webp"],
-    ["アヤネ","アヤネ","./icon/Abydos/ayane01.webp"],
-    ["アヤネ_メモリアル","アヤネ","./icon/Abydos/ayane02.webp"],
+    ["ホシノ","ホシノ","./images/icon/Abydos/hoshino01.webp"],
+    ["ホシノ_メモリアル","ホシノ","./images/icon/Abydos/hoshino02.webp"],
+    ["シロコ","シロコ","./images/icon/Abydos/shiroko01.webp"],
+    ["シロコ_メモリアル","シロコ","./images/icon/Abydos/shiroko02.webp"],
+    ["ノノミ","ノノミ","./images/icon/Abydos/nonomi01.webp"],
+    ["ノノミ_メモリアル","ノノミ","./images/icon/Abydos/nonomi02.webp"],
+    ["セリカ","セリカ","./images/icon/Abydos/serika01.webp"],
+    ["セリカ_メモリアル","セリカ","./images/icon/Abydos/serika02.webp"],
+    ["アヤネ","アヤネ","./images/icon/Abydos/ayane01.webp"],
+    ["アヤネ_メモリアル","アヤネ","./images/icon/Abydos/ayane02.webp"],
 ];
 const gehena = [
     ["キャラ未選択","",""],
-    ["ヒナ","ヒナ","./icon/Gehena/chara.webp"],
-    ["ヒナ_メモリアル","ヒナ","./icon/Gehena/chara.webp"]
+    ["ヒナ","ヒナ","./images/icon/Gehena/chara.webp"],
+    ["ヒナ_メモリアル","ヒナ","./images/icon/Gehena/chara.webp"]
 ];
 const millennium = [
     ["キャラ未選択","",""],
-    ["ノア","ノア","./icon/Millennium/chara.webp"]
+    ["ノア","ノア","./images/icon/Millennium/chara.webp"]
 ];
 const trinity = [
     ["キャラ未選択","",""],
-    ["ナギサ","ナギサ","./icon/Trinity/chara.webp"]
+    ["ナギサ","ナギサ","./images/icon/Trinity/chara.webp"]
 ];
 const hyakki = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/hyakki/chara.webp"]
+    ["未実装","","./images/icon/hyakki/chara.webp"]
 ];
 const sankai = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/Sankai_sutra/chara.webp"]
+    ["未実装","","./images/icon/Sankai_sutra/chara.webp"]
 ];
 const srt = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/SRT/chara.webp"]
+    ["未実装","","./images/icon/SRT/chara.webp"]
 ];
 const alius = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/Alius/chara.webp"]
+    ["未実装","","./images/icon/Alius/chara.webp"]
 ];
 const valkure = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/Valkure/chara.webp"]
+    ["未実装","","./images/icon/Valkure/chara.webp"]
 ];
 const renpou = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/Renpou/chara.webp"]
+    ["未実装","","./images/icon/Renpou/chara.webp"]
 ];
 const schale = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/Schale/chara.webp"]
+    ["未実装","","./images/icon/Schale/chara.webp"]
 ];
 const gematria = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/Gematria/chara.webp"]
+    ["未実装","","./images/icon/Gematria/chara.webp"]
 ];
 const mob = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/Mob/chara.webp"]
+    ["未実装","","./images/icon/Mob/chara.webp"]
 ];
 const hue = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/Hue/chara.webp"]
+    ["未実装","","./images/icon/Hue/chara.webp"]
 ];
 const another = [
     ["キャラ未選択","",""],
-    ["未実装","","./icon/Another/chara.webp"]
+    ["未実装","","./images/icon/Another/chara.webp"]
 ];
 const affiliation = [
     not_sel,
@@ -106,10 +106,10 @@ const affiliation = [
 ];
 const effectImage = [
     "",
-    "./bag2.png",
-    "./blood2.png",
-    "./blood3.png",
-    "./blood1.png"
+    "./images/ui/bag2.png",
+    "./images/ui/blood2.png",
+    "./images/ui/blood3.png",
+    "./images/ui/blood1.png"
 ];
 
 html2canvas(document.querySelector("#create_area"), {
