@@ -107,9 +107,9 @@ const affiliation = [
 const effectImage = [
     "",
     "./bag2.png",
-    "./.png",
-    "./.png",
-    "./.png"
+    "./blood2.png",
+    "./blood3.png",
+    "./blood1.png"
 ];
 
 html2canvas(document.querySelector("#create_area"), {
