@@ -3,7 +3,6 @@ var messageArray = [];
 var messageIdx = 0;
 var messageHistory = [];
 var output = document.getElementById('output');
-var form_s = document.forms.students;
 var select_afflication = document.getElementById("sel_school");
 var select_s = document.getElementById("sel_student");
 var select_effect = document.getElementById("sel_effect");
@@ -12,6 +11,26 @@ var position_s = document.getElementsByName("position");
 var affiliation_num = 0;
 var student_num = 0;
 var before = "null";
+
+const schools = [
+    "所属未選択",
+    "アビドス",
+    "ゲヘナ",
+    "ミレニアム",
+    "トリニティ",
+    "百鬼夜行",
+    "レッドウィンター",
+    "山海経",
+    "SRT",
+    "アリウス",
+    "ヴァルキューレ",
+    "連邦生徒会",
+    "シャーレ",
+    "ゲマトリア",
+    "モブ",
+    "色彩",
+    "その他"
+];
 
 const not_sel = [
     ["所属が未選択です","",""]
@@ -44,23 +63,28 @@ const trinity = [
 ];
 const hyakki = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/hyakki/chara.webp"]
+    ["未実装","","./images/icon/Hyakki_Night/chara.webp"]
 ];
+const redwinter = [
+    ["キャラ未選択","",""],
+    ["未実装","","./images/icon/Red_Winter/chara.webp"]
+]
 const sankai = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Sankai_sutra/chara.webp"]
+    ["未実装","","./images/icon/Sankai_Sutra/chara.webp"]
 ];
+
 const srt = [
     ["キャラ未選択","",""],
     ["未実装","","./images/icon/SRT/chara.webp"]
 ];
-const alius = [
+const arius = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Alius/chara.webp"]
+    ["未実装","","./images/icon/Arius/chara.webp"]
 ];
-const valkure = [
+const valkyrie = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Valkure/chara.webp"]
+    ["未実装","","./images/icon/Valkyrie/chara.webp"]
 ];
 const renpou = [
     ["キャラ未選択","",""],
@@ -93,10 +117,11 @@ const affiliation = [
     millennium,
     trinity,
     hyakki,
+    redwinter,
     sankai,
     srt,
-    alius,
-    valkure,
+    arius,
+    valkyrie,
     renpou,
     schale,
     gematria,
@@ -149,6 +174,20 @@ function setCanvas(){
     });
     
 }
+
+window.onload = function(){
+    // option要素を削除（方法はいろいろありますが）
+    while (0 < select_afflication.length) {
+        select_afflication.remove(0);
+    }
+    for(let i = 0; i < schools.length; i++){
+        let option = document.createElement('option');
+        option.value = i;
+        option.text = schools[i];
+        select_afflication.appendChild(option);
+    }
+}
+
 /*入力内容を表示する関数*/
 function display() {
     var loop = '';
@@ -550,10 +589,13 @@ document.querySelector('#input_photo').addEventListener('change', (event) => {
 function split(target){
 
     let textarea = target;
+    
     textarea = splitCheck(textarea);
+    textarea = displace(textarea);
     textarea = splitColor(textarea);
     textarea = splitSize(textarea);
-
+    textarea = splitFont(textarea);
+    
     return textarea.split('\n').join('<br>');
 }
 function inputColor(target,color){
@@ -593,6 +635,54 @@ function splitSize(target){
     
     return textarea.split('{End}').join('</font>');
 }
+function inputFont(target,type){
+    document.getElementById(target).value = "["+type+"]"+document.getElementById(target).value+"[End]";
+}
+function splitFont(target){
+
+    let textarea = target;
+    textarea = textarea.split('[Mincho]').join('<font face="Yu Mincho" style="font-weight:bold;">');
+    textarea = textarea.split('[Gothic]').join('<font face="Yu Gothic" style="font-weight:bold;">');
+    
+    return textarea.split('[End]').join('</font>');
+}
+function inputDisplace(target){
+    document.getElementById(target).value = "(!dis!)"+document.getElementById(target).value;
+}
+function displace(target){
+    if(target.includes('(!dis!)')){
+
+        target = target.split('(!dis!)').join('');
+        target = target.split('|Red|').join('');
+        target = target.split('|Blue|').join('');
+        target = target.split('|Green|').join('');
+        target = target.split('|Love|').join('');
+        target = target.split('|Blood|').join('');
+        target = target.split('|Black|').join('');
+        target = target.split('|Glitch|').join('');
+        target = target.split('|Vibrate|').join('');
+        target = target.split('|End|').join('');
+        target = target.split('{Big}').join('');
+        target = target.split('{Large}').join('');
+        target = target.split('{End}').join('');
+        target = target.split('[Mincho]').join('');
+        target = target.split('[Gothic]').join('');
+        target = target.split('[End]').join('');
+
+        let ary = target.split('');
+        let result = "";
+
+        for(let i = 0; i < ary.length; i++){
+            ary[i] = '<font style="transform:rotate('+(Math.floor(Math.random() * 30) - 15)+'deg); font-size:'+(Math.floor(Math.random() * 12) + 14)+'px;">'+ary[i]+'</font>';
+            result += ary[i];
+        }
+        return result;
+    }else{
+        return target;
+    }
+    
+}
+
 window.onbeforeunload = function () {
     return "";
 }
@@ -613,3 +703,5 @@ document.getElementById('load').addEventListener('change', function(e) {
         messageIdx++;
     })
 })
+
+

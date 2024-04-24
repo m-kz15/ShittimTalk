@@ -3,6 +3,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,height=device-height">
 		<link rel="stylesheet" href="style.css" type="text/css">
+		<!--<script type="text/javascript" src="scroll.js"></script>-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 	</head>
 	<body onload="setCanvas();">
@@ -181,21 +182,6 @@
 					<br>
 					<select name="sel_school" class="selection" id="sel_school">
 						<option value="0">所属未選択</option>
-						<option value="1">アビドス</option>
-						<option value="2">ゲヘナ</option>
-						<option value="3">ミレニアム</option>
-						<option value="4">トリニティ</option>
-						<option value="5">百鬼夜行</option>
-						<option value="6">山海経</option>
-						<option value="7">SRT</option>
-						<option value="8">アリウス</option>
-						<option value="9">ヴァルキューレ</option>
-						<option value="10">連邦生徒会</option>
-						<option value="11">シャーレ</option>
-						<option value="12">ゲマトリア</option>
-						<option value="13">モブ</option>
-						<option value="14">色彩</option>
-						<option value="15">その他</option>
 					</select>
 					<br>
 					<select name="sel_student" class="selection" id="sel_student">
@@ -203,12 +189,22 @@
 					</select>
 
 					<select name="sel_effect" class="selection" id="sel_effect">
-						<option value="0">なにもなし</option>
+						<option value="0">エフェクト無し</option>
 						<option value="1">バグ</option>
 						<option value="2">流血</option>
 						<option value="3">返り血</option>
 						<option value="4">致命傷</option>
 					</select>
+					<!--<div class="scroll_box">
+						<div class="scroll_area" id="emotion" tabindex="0" role="region">
+							<img src="./images/icon/Abydos/hoshino01.webp" class="scroll_icon">
+							<img src="./images/icon/Abydos/hoshino01.webp" class="scroll_icon">
+							<img src="./images/icon/Abydos/hoshino01.webp" class="scroll_icon">
+							<img src="./images/icon/Abydos/hoshino01.webp" class="scroll_icon">
+							<img src="./images/icon/Abydos/hoshino01.webp" class="scroll_icon">
+						</div>
+						
+					</div>-->
 				</form>
 				<canvas id="newIcon"></canvas>
 				<label for="newChara"><font color="#0000ff"><u><h3>アイコンを指定する</h3></u></font></label><input id="newChara" name="input" type="file" accept="image/icon/" style="display: none;">
@@ -233,6 +229,12 @@
 					<button class="input_size" onclick="inputSize('input_student_talk','Big');">大</button>
 					<button class="input_size" onclick="inputSize('input_student_talk','Large');">特大</button>
 					<br>
+					<button class="input_font" id="Mincho" onclick="inputFont('input_student_talk','Mincho');">明朝体</button>
+					<button class="input_font" id="Gothic" onclick="inputFont('input_student_talk','Gothic');">ゴシック</button>
+					<br>
+					<br>
+					<button class="input_displace" onclick="inputDisplace('input_student_talk');">号哭</button>
+					<p>※号哭を選択すると他の装飾は反映されません。</p>
 					
 				</details>
 				<button class="decision" onclick="createMessage(0,true)">表示</button>
@@ -256,6 +258,10 @@
 					<br>
 					<button class="input_size" onclick="inputSize('input_teacher_talk','Big');">大</button>
 					<button class="input_size" onclick="inputSize('input_teacher_talk','Large');">特大</button>
+					<br>
+					<br>
+					<button class="input_displace" onclick="inputDisplace('input_teacher_talk');">号哭</button>
+					<p>※号哭を選択すると他の装飾は反映されません。</p>
 				</details>
 				<button class="decision" onclick="createMessage(1,true);">セリフ表示</button>
 			</div>
@@ -329,5 +335,6 @@
 
 		</div>
 		<script type="text/javascript" src="talk.js" defer></script>
+		
 	</body>
 </html>
