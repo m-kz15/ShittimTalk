@@ -641,8 +641,8 @@ function inputFont(target,type){
 function splitFont(target){
 
     let textarea = target;
-    textarea = textarea.split('[Mincho]').join('<font face="Yu Mincho" style="font-weight:bold;">');
-    textarea = textarea.split('[Gothic]').join('<font face="Yu Gothic" style="font-weight:bold;">');
+    textarea = textarea.split('[serif]').join('<font face="serif" style="font-weight:bold;">');
+    textarea = textarea.split('[sans-serif]').join('<font face="sans-serif" style="font-weight:bold;">');
     
     return textarea.split('[End]').join('</font>');
 }
@@ -665,8 +665,8 @@ function displace(target){
         target = target.split('{Big}').join('');
         target = target.split('{Large}').join('');
         target = target.split('{End}').join('');
-        target = target.split('[Mincho]').join('');
-        target = target.split('[Gothic]').join('');
+        target = target.split('[serif]').join('');
+        target = target.split('[sans-serif]').join('');
         target = target.split('[End]').join('');
 
         let ary = target.split('');
