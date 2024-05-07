@@ -742,7 +742,7 @@ document.getElementById('load').addEventListener('click', function() {
         if(Repository.data.MsgList.length == 0){
             alert("復元できるデータがありません。")
         }else{
-            messageIdx = Repository.data.MsgList.length;
+            messageIdx = Repository.data.MsgList.length-1;
             document.getElementById("create_title").innerText = "作品名："+Repository.data.Title;
             document.getElementById("creater_name").innerText = "作者名："+Repository.data.UserName;
             display();
