@@ -5,6 +5,8 @@
 		<link rel="stylesheet" href="style.css" type="text/css">
 		<!--<script type="text/javascript" src="scroll.js"></script>-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+		<script src="./WebStrage.js"></script>
+		<script src="./Repository.js"></script>
 	</head>
 	<body onload="setCanvas();">
 		<!-- 入力欄(#sub)の表示・非表示を切り替えるチェックボックス -->
@@ -147,17 +149,44 @@
 		<div id="sub">
 			<div class="input_box">
 				<details>
+					<summary>保存データ一覧</summary>
+					<table class="dataTable">
+						<tr>
+							<th>1.</th>
+							<td id="data1">タイトル</td>
+							<td id="datab1"><button onclick="setKey('1');">データ選択</button></td>
+						</tr>
+						<tr>
+							<th>2.</th>
+							<td id="data2">タイトル</td>
+							<td id="datab1"><button onclick="setKey('2');">データ選択</button></td>
+						</tr>
+						<tr>
+							<th>3.</th>
+							<td id="data3">タイトル</td>
+							<td id="datab1"><button onclick="setKey('3');">データ選択</button></td>
+						</tr>
+					</table>
+				</details>
+			</div>
+			<div class="input_box">
+				<details>
 					<summary>保存/復元/完成</summary>
 					<div class="fileOption">
 						<a id="save" download="incomplete.txt"><font color=#5058ff><u>セーブ</u></font></a>
 					</div>
 					<div class="fileOption">
-						<label for="load"><font color=#5058ff>復元</font></label>
-						<input accept=".txt" type="file" id="load" name="myfile" style="display: none;"></input>
+						<!--<label for="load"><font color=#5058ff>復元</font></label>-->
+						<a id="load"><font color=#5058ff>復元</font></a>
+						<!--<input accept=".txt" type="file" id="load" name="myfile" style="display: none;"></input>-->
 					</div>
 					<div class="fileOption">
 						<font color=#5058ff><a href="" id="ss" style="pointer-events:auto;">完成</a></font>
 					</div>
+					<div class="fileOption">
+						<a id="remove"><font color=#ff0000>削除</font></a>
+					</div>
+					<label id="now">選択されているデータ：</label>
 				<br>
 				
 				</details>
