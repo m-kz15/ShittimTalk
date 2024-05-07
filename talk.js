@@ -317,7 +317,7 @@ function createTeacher(category, flg){
             Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
         }
         before = "teacher";
-        Repository.data.MsgHistory[messageIdx] = "teachar";
+        Repository.data.MsgHistory[messageIdx] = "teacher";
         Repository.data.MsgList[messageIdx] += '\
         <div class="talk_box" id="'+category+'">\n\
             <div class="frame">\n\
@@ -463,7 +463,7 @@ function deleteMessage(){
         }else{
             before = "null";
         }
-        //alert(before)
+        
         display();
     }
 }
