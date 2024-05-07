@@ -458,7 +458,12 @@ function deleteMessage(){
     if(messageIdx > 0){
         Repository.data.MsgList.pop();
         messageIdx--;
-        before = Repository.data.MsgHistory[messageIdx];
+        if(messageIdx > 0){
+            before = Repository.data.MsgHistory[messageIdx-1];
+        }else{
+            before = "null";
+        }
+        //alert(before)
         display();
     }
 }
@@ -742,7 +747,9 @@ document.getElementById('load').addEventListener('click', function() {
         if(Repository.data.MsgList.length == 0){
             alert("復元できるデータがありません。")
         }else{
+            
             messageIdx = Repository.data.MsgList.length;
+            //alert(Repository.data.MsgHistory[messageIdx-1])
             before = Repository.data.MsgHistory[messageIdx-1];
             document.getElementById("create_title").innerText = "作品名："+Repository.data.Title;
             document.getElementById("creater_name").innerText = "作者名："+Repository.data.UserName;
