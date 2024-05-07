@@ -1,7 +1,5 @@
 var alldata = "";
-var messageArray = [];
 var messageIdx = 0;
-var messageHistory = [];
 var output = document.getElementById('output');
 var select_afflication = document.getElementById("sel_school");
 var select_s = document.getElementById("sel_student");
@@ -50,8 +48,8 @@ const abydos = [
 ];
 const gehena = [
     ["キャラ未選択","",""],
-    ["ヒナ","ヒナ","./images/icon/Gehena/chara.webp"],
-    ["ヒナ_メモリアル","ヒナ","./images/icon/Gehena/chara.webp"]
+    ["ヒナ","ヒナ","./images/icon/Gehena/hina01.webp"],
+    ["ヒナ_メモリアル","ヒナ","./images/icon/Gehena/hina02.webp"]
 ];
 const millennium = [
     ["キャラ未選択","",""],
@@ -172,7 +170,6 @@ function setCanvas(){
         document.getElementById('result').appendChild(viewImage);
         document.getElementById('downloadImage').setAttribute("src",canvas.toDataURL())
     });
-    
 }
 
 window.onload = function(){
@@ -186,13 +183,30 @@ window.onload = function(){
         option.text = schools[i];
         select_afflication.appendChild(option);
     }
+    for(let i = 1; i <= 3; i++){
+        Repository.keyName = "Shittim_data"+i.toString();
+        Repository.restore();
+        if(Repository.data.MsgList.length != 0){
+            document.getElementById("data"+i.toString()).innerText = Repository.data.Title;
+        }else{
+            document.getElementById("data"+i.toString()).innerText = "データ無し";
+        }
+        
+    }
+    Repository.keyName = '';
+    Repository.data = {
+        Title: "",
+        UserName: "",
+        MsgList: [],
+        MsgHistory: []
+    }
 }
 
 /*入力内容を表示する関数*/
 function display() {
     var loop = '';
     loop += '<p class="gap" id="big"></p>';
-    messageArray.forEach(function(elment) {
+    Repository.data.MsgList.forEach(function(elment) {
         loop += elment.replaceAll('&nbsp;', '');
     });
     loop += '<p class="gap" id="large"></p>';
@@ -222,11 +236,11 @@ function createMessage(category,flg){
 }
 
 function setCreater(){
-    let title = document.getElementById("input_title").value;
-    let name = document.getElementById("input_author").value;
+    Repository.data.Title = document.getElementById("input_title").value;
+    Repository.data.UserName = document.getElementById("input_author").value;
 
-    document.getElementById("create_title").innerText = "作品名："+title;
-    document.getElementById("creater_name").innerText = "作者名："+name;
+    document.getElementById("create_title").innerText = "作品名："+Repository.data.Title;
+    document.getElementById("creater_name").innerText = "作者名："+Repository.data.UserName;
 
     display();
 }
@@ -238,27 +252,27 @@ function createStudent(category,flg){
     let message = document.getElementById("input_student_talk");
     if(message.value != ""){
         if(before == category+":"+name.value){
-            messageArray[messageIdx] = '<p class="gap" id="small"></p>';
+            Repository.data.MsgList[messageIdx] = '<p class="gap" id="small"></p>';
         }else{
-            messageArray[messageIdx] = '<p class="gap" id="big"></p>';
+            Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
         }
         before = category+":"+name.value;
-        messageHistory[messageIdx] = category+":"+name.value;
+        Repository.data.MsgHistory[messageIdx] = category+":"+name.value;
         if(flg == true){
-            messageArray[messageIdx] += '\
+            Repository.data.MsgList[messageIdx] += '\
         <div class="talk_box" id="'+category+'">\n\
             <div class="icon_box">\n\
                 <img src="'+icon.value+'" class="icon">\n\
             </div>\n\
             ';
             if(effect.value != ""){
-                messageArray[messageIdx] += '\
+                Repository.data.MsgList[messageIdx] += '\
             <div class="icon_box">\n\
                 <img src="'+effect.value+'" class="icon">\n\
             </div>\n\
             ';
             }
-            messageArray[messageIdx] += '\
+            Repository.data.MsgList[messageIdx] += '\
             <div class="frame">\n\
                 <div class="name_box">\n\
                     <div class="name_area">\n\
@@ -274,7 +288,7 @@ function createStudent(category,flg){
         </div>\n\
             ';
         }else{
-            messageArray[messageIdx] += '\
+            Repository.data.MsgList[messageIdx] += '\
         <div class="talk_box" id="'+category+'">\n\
             <div class="frame">\n\
                 <div class="message_box">\n\
@@ -287,7 +301,7 @@ function createStudent(category,flg){
             ';
         }
         message.value = "";
-        //alert(messageArray[messageIdx]);
+        //alert(Repository.data.MsgList[messageIdx]);
         messageIdx++;
         display();
     }
@@ -298,13 +312,13 @@ function createTeacher(category, flg){
     let message = document.getElementById("input_teacher_talk");
     if(message.value != ""){
         if(before == "teacher"){
-            messageArray[messageIdx] = '<p class="gap" id="small"></p>';
+            Repository.data.MsgList[messageIdx] = '<p class="gap" id="small"></p>';
         }else{
-            messageArray[messageIdx] = '<p class="gap" id="big"></p>';
+            Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
         }
         before = "teacher";
-        messageHistory[messageIdx] = "teachar";
-        messageArray[messageIdx] += '\
+        Repository.data.MsgHistory[messageIdx] = "teachar";
+        Repository.data.MsgList[messageIdx] += '\
         <div class="talk_box" id="'+category+'">\n\
             <div class="frame">\n\
                 <div class="message_box">\n\
@@ -326,9 +340,9 @@ function createComment(category, flg){
     let message = document.getElementById("input_comment");
     if(message.value != ""){
         before = "comment";
-        messageHistory[messageIdx] = "comment";
-        messageArray[messageIdx] = '<p class="gap" id="big"></p>';
-        messageArray[messageIdx] += '\
+        Repository.data.MsgHistory[messageIdx] = "comment";
+        Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
+        Repository.data.MsgList[messageIdx] += '\
         <div class="talk_box" id="'+category+'">\n\
             <div class="frame">\n\
                 <div class="message_box">\n\
@@ -353,7 +367,7 @@ function createReply(category, flg){
 
     if(!(message1.value == "" && message2.value == "")){
         before = "reply";
-        messageHistory[messageIdx] = "reply";
+        Repository.data.MsgHistory[messageIdx] = "reply";
         if(message1.value == "" && message2.value != ""){
             replyFlg = true;
             message1.value = message2.value;
@@ -361,8 +375,8 @@ function createReply(category, flg){
             replyFlg = true;
         }
 
-        messageArray[messageIdx] = '<p class="gap" id="big"></p>';
-        messageArray[messageIdx] += '\
+        Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
+        Repository.data.MsgList[messageIdx] += '\
     <div class="talk_box" id="'+category+'">\n\
 	<div class="frame">\n\
 		<div class="title_area">\n\
@@ -374,13 +388,13 @@ function createReply(category, flg){
             <div class="shadow">\n\
     ';
         if(replyFlg){
-            messageArray[messageIdx] += '\
+            Repository.data.MsgList[messageIdx] += '\
                 <div class="message_area" id="'+flg+'">\n\
 				    <p class="message">'+split(message1.value)+'</p>\n\
 		        </div>\n\
         ';
         }else{
-            messageArray[messageIdx] += '\
+            Repository.data.MsgList[messageIdx] += '\
                 <div class="message_area" id="'+flg+'">\n\
 				    <p class="message">'+split(message1.value)+'</p>\n\
 		        </div>\n\
@@ -391,7 +405,7 @@ function createReply(category, flg){
 		        </div>\n\
         ';
         }
-        messageArray[messageIdx] += '\
+        Repository.data.MsgList[messageIdx] += '\
             </div>\n\
 		</div>\n\
 	</div>\n\
@@ -412,9 +426,9 @@ function createBonding(category, flg){
 
     if(message.value != ""){
         before = "bonding";
-    messageHistory[messageIdx] = "bonding";
-    messageArray[messageIdx] = '<p class="gap" id="big"></p>';
-    messageArray[messageIdx] += '\
+    Repository.data.MsgHistory[messageIdx] = "bonding";
+    Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
+    Repository.data.MsgList[messageIdx] += '\
 <div class="talk_box" id="'+category+'">\n\
 	<div class="frame">\n\
 		<div class="title_area">\n\
@@ -442,9 +456,9 @@ function createBonding(category, flg){
 
 function deleteMessage(){
     if(messageIdx > 0){
-        messageArray.pop();
+        Repository.data.MsgList.pop();
         messageIdx--;
-        before = messageHistory[messageIdx];
+        before = Repository.data.MsgHistory[messageIdx];
         display();
     }
 }
@@ -559,15 +573,15 @@ document.querySelector('#input_photo').addEventListener('change', (event) => {
     const reader = new FileReader()
 
     before = "photo";
-    messageHistory[messageIdx] = "photo";
+    Repository.data.MsgHistory[messageIdx] = "photo";
 
     reader.onload = (event) => {
         document.querySelector('#img').src = event.target.result;
     }
 
     reader.addEventListener('load', function() {
-        messageArray[messageIdx] = '<p class="gap" id="large"></p>';
-        messageArray[messageIdx] += '\
+        Repository.data.MsgList[messageIdx] = '<p class="gap" id="large"></p>';
+        Repository.data.MsgList[messageIdx] += '\
 <div class="talk_box" id="c_p">\n\
 	<div class="frame">\n\
 		<div class="photo_box">\n\
@@ -577,8 +591,8 @@ document.querySelector('#input_photo').addEventListener('change', (event) => {
         </div>\n\
 	</div>\n\
 </div>\n';
-        messageArray[messageIdx] += '<p class="gap" id="big"></p>';
-        messageArray[messageIdx] += '<p class="gap" id="small"></p>';
+        Repository.data.MsgList[messageIdx] += '<p class="gap" id="big"></p>';
+        Repository.data.MsgList[messageIdx] += '<p class="gap" id="small"></p>';
         
         messageIdx++;
         display();
@@ -686,22 +700,94 @@ function displace(target){
 window.onbeforeunload = function () {
     return "";
 }
+function setKey(num){
+    Repository.keyName = "Shittim_data"+num;
+    document.getElementById("now").innerHTML = "選択されているデータ：<font color=#ff0000>"+num+"</font>";
+}
 document.getElementById('save').addEventListener('click', function() {
-    const blob = new Blob([alldata], {
+    if(Repository.keyName == ''){
+        alert("保存先が選択されていません。");
+    }else if(Repository.data.MsgList.length == 0){
+        alert("なにも入力されてません。")
+    }else if(Repository.data.Title == "" || Repository.data.UserName == ""){
+        alert("作品名または作者名が入力されていません。")
+    }else{
+        let n = Repository.keyName;
+        Repository.save();
+        for(let i = 1; i <= 3; i++){
+            Repository.keyName = "Shittim_data"+i.toString();
+            Repository.restore();
+            if(Repository.data.MsgList.length != 0){
+                document.getElementById("data"+i.toString()).innerText = Repository.data.Title;
+            }else{
+                document.getElementById("data"+i.toString()).innerText = "データ無し";
+            }
+        }
+        Repository.keyName = n;
+        Repository.restore();
+        alert("データを保存しました。");
+    }
+    
+    /*const blob = new Blob([alldata], {
         "type": "text/plain"
     });
-    document.getElementById('save').href = window.URL.createObjectURL(blob);
+    document.getElementById('save').href = window.URL.createObjectURL(blob);*/
 })
-document.getElementById('load').addEventListener('change', function(e) {
+
+document.getElementById('load').addEventListener('click', function() {
+    if(Repository.keyName == ""){
+        alert("復元先が選択されていません。");
+    }else{
+        Repository.restore();
+        if(Repository.data.MsgList.length == 0){
+            alert("復元できるデータがありません。")
+        }else{
+            messageIdx = Repository.data.MsgList.length;
+            document.getElementById("create_title").innerText = "作品名："+Repository.data.Title;
+            document.getElementById("creater_name").innerText = "作者名："+Repository.data.UserName;
+            display();
+            alert("データを復元しました。");
+        }
+        
+    }
+    
+    /*const blob = new Blob([alldata], {
+        "type": "text/plain"
+    });
+    document.getElementById('save').href = window.URL.createObjectURL(blob);*/
+})
+document.getElementById('remove').addEventListener('click', function() {
+    if(Repository.keyName == ""){
+        alert("削除対象が選択されていません。");
+    }else{
+        if(confirm("本当に削除しますか？\r\n削除すると復元ができなくなります。")){
+            Repository.remove();
+            let n = Repository.keyName;
+            for(let i = 1; i <= 3; i++){
+                Repository.keyName = "Shittim_data"+i.toString();
+                Repository.restore();
+                if(Repository.data.MsgList.length != 0){
+                    document.getElementById("data"+i.toString()).innerText = Repository.data.Title;
+                }else{
+                    document.getElementById("data"+i.toString()).innerText = "データ無し";
+                }
+            }
+            Repository.keyName = n;
+            Repository.restore();
+            alert("データを削除しました。");
+        }
+    }
+})
+/*document.getElementById('load').addEventListener('change', function(e) {
     var result = e.target.files[0];
     var reader = new FileReader();
     reader.readAsText(result);
     reader.addEventListener('load', function() {
         messageIdx = 0;
-        messageArray[messageIdx] = reader.result;
+        Repository.data.MsgList[messageIdx] = reader.result;
         display();
         messageIdx++;
     })
-})
+})*/
 
 
