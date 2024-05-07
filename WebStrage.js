@@ -1,6 +1,6 @@
 var WebStorage = {
 
-    useSession: true,       // セッションストレージを使うか否か
+    useSession: false,       // セッションストレージを使うか否か
 
     /**
      * Storageが使用可能かどうか
