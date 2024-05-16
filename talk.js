@@ -26,6 +26,7 @@ const schools = [
     "シャーレ",
     "ゲマトリア",
     "モブ",
+    "カイザー",
     "色彩",
     "その他"
 ];
@@ -44,7 +45,9 @@ const abydos = [
     ["セリカ","セリカ","./images/icon/Abydos/serika01.webp"],
     ["セリカ_メモリアル","セリカ","./images/icon/Abydos/serika02.webp"],
     ["アヤネ","アヤネ","./images/icon/Abydos/ayane01.webp"],
-    ["アヤネ_メモリアル","アヤネ","./images/icon/Abydos/ayane02.webp"]
+    ["アヤネ_メモリアル","アヤネ","./images/icon/Abydos/ayane02.webp"],
+    ["ユメ","ユメ","./images/icon/Abydos/yume01.webp"],
+    ["ホシノ-過去-","ホシノ","./images/icon/Abydos/hoshino03.webp"],
 ];
 const gehena = [
     ["キャラ未選択","",""],
@@ -232,6 +235,8 @@ const hyakki = [
     ["シズコ_メモリアル","シズコ","./images/icon/Hyakki_Night/shizuko02.webp"],
     ["フィーナ","フィーナ","./images/icon/Hyakki_Night/fina01.webp"],
     ["フィーナ_メモリアル","フィーナ","./images/icon/Hyakki_Night/fina02.webp"],
+    ["ウミカ","ウミカ","./images/icon/Hyakki_Night/umika01.webp"],
+    ["ウミカ_メモリアル","ウミカ","./images/icon/Hyakki_Night/umika02.webp"],
     //  修行部
     ["ツバキ","ツバキ","./images/icon/Hyakki_Night/tsubaki01.webp"],
     ["ツバキ_メモリアル","ツバキ","./images/icon/Hyakki_Night/tsubaki02.webp"],
@@ -257,62 +262,157 @@ const hyakki = [
     //  停学中
     ["ワカモ","ワカモ","./images/icon/Hyakki_Night/wakamo01.webp"],
     ["ワカモ_メモリアル","ワカモ","./images/icon/Hyakki_Night/wakamo02.webp"],
+    ["クズノハ","クズノハ","./images/icon/Hyakki_Night/kuzunoha01.webp"],
 ];
 const redwinter = [
     ["キャラ未選択","",""],
     //  事務局
+    ["チェリノ","チェリノ","./images/icon/Red_Winter/tyerino01.webp"],
+    ["チェリノ_メモリアル","チェリノ","./images/icon/Red_Winter/tyerino02.webp"],
+    ["マリナ","マリナ","./images/icon/Red_Winter/marina01.webp"],
+    ["マリナ_メモリアル","マリナ","./images/icon/Red_Winter/marina02.webp"],
+    ["トモエ","トモエ","./images/icon/Red_Winter/tomoe01.webp"],
+    ["トモエ_メモリアル","トモエ","./images/icon/Red_Winter/tomoe02.webp"],
     //  工務部
+    ["ミノリ","ミノリ","./images/icon/Red_Winter/minori01.webp"],
+    ["ミノリ_メモリアル","ミノリ","./images/icon/Red_Winter/minori02.webp"],
     //  227号特別クラス
+    ["ノドカ","ノドカ","./images/icon/Red_Winter/nodoka01.webp"],
+    ["ノドカ_メモリアル","ノドカ","./images/icon/Red_Winter/nodoka02.webp"],
+    ["シグレ","シグレ","./images/icon/Red_Winter/sigure01.webp"],
+    ["シグレ_メモリアル","シグレ","./images/icon/Red_Winter/sigure02.webp"],
     //  知識解放戦線
+    ["メル","メル","./images/icon/Red_Winter/meru01.webp"],
+    ["メル_メモリアル","メル","./images/icon/Red_Winter/meru02.webp"],
+    ["モミジ","モミジ","./images/icon/Red_Winter/momizi01.webp"],
+    ["モミジ_メモリアル","モミジ","./images/icon/Red_Winter/momizi02.webp"],
     //  出版部
-    ["未実装","","./images/icon/Red_Winter/chara.webp"]
+    ["ヤクモ","ヤクモ","./images/icon/Red_Winter/yakumo01.webp"],
+    ["タカネ","タカネ","./images/icon/Red_Winter/takane01.webp"]
+    //["未実装","","./images/icon/Red_Winter/chara.webp"]
 ]
 const sankai = [
     ["キャラ未選択","",""],
     //  玄龍門
+    ["キサキ","キサキ","./images/icon/Sankai_Sutra/kisaki01.webp"],
+    ["ミナ","ミナ","./images/icon/Sankai_Sutra/mina01.webp"],
+    ["ミナ_メモリアル","ミナ","./images/icon/Sankai_Sutra/mina02.webp"],
     //  錬丹術研究会
+    ["サヤ","サヤ","./images/icon/Sankai_Sutra/saya01.webp"],
+    ["サヤ_メモリアル","サヤ","./images/icon/Sankai_Sutra/saya02.webp"],
     //  梅花園
+    ["シュン","シュン","./images/icon/Sankai_Sutra/syunn01.webp"],
+    ["シュン_メモリアル","シュン","./images/icon/Sankai_Sutra/syunn02.webp"],
+    ["ココナ","ココナ","./images/icon/Sankai_Sutra/kokona01.webp"],
+    ["ココナ_メモリアル","ココナ","./images/icon/Sankai_Sutra/kokona02.webp"],
     //  玄武商会
-    ["未実装","","./images/icon/Sankai_Sutra/chara.webp"]
+    ["ルミ","ルミ","./images/icon/Sankai_Sutra/rumi01.webp"],
+    ["ルミ_メモリアル","ルミ","./images/icon/Sankai_Sutra/rumi02.webp"],
+    ["レイジョ","レイジョ","./images/icon/Sankai_Sutra/reijo01.webp"]
+    //["未実装","","./images/icon/Sankai_Sutra/chara.webp"]
 ];
 
 const srt = [
     ["キャラ未選択","",""],
     //  ラビット
+    ["ミヤコ","ミヤコ","./images/icon/SRT/miyako01.webp"],
+    ["ミヤコ_メモリアル","ミヤコ","./images/icon/SRT/miyako02.webp"],
+    ["サキ","サキ","./images/icon/SRT/saki01.webp"],
+    ["サキ_メモリアル","サキ","./images/icon/SRT/saki02.webp"],
+    ["ミユ","ミユ","./images/icon/SRT/miyu01.webp"],
+    ["ミユ_メモリアル","ミユ","./images/icon/SRT/miyu02.webp"],
+    ["モエ","モエ","./images/icon/SRT/moe01.webp"],
+    ["モエ_メモリアル","モエ","./images/icon/SRT/moe02.webp"],
     //  フォックス
-    ["未実装","","./images/icon/SRT/chara.webp"]
+    ["ユキノ","ユキノ","./images/icon/SRT/yukino01.webp"],
+    ["ニコ","ニコ","./images/icon/SRT/niko01.webp"],
+    ["オトギ","オトギ","./images/icon/SRT/otogi01.webp"],
+    ["クルミ","クルミ","./images/icon/SRT/kurumi01.webp"]
+    //["未実装","","./images/icon/SRT/chara.webp"]
 ];
 const arius = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Arius/chara.webp"]
+    ["サオリ","サオリ","./images/icon/Arius/saori01.webp"],
+    ["サオリ_メモリアル","サオリ","./images/icon/Arius/saori02.webp"],
+    ["アツコ","アツコ","./images/icon/Arius/atsuko01.webp"],
+    ["アツコ_メモリアル","アツコ","./images/icon/Arius/atsuko02.webp"],
+    ["ミサキ","ミサキ","./images/icon/Arius/misaki01.webp"],
+    ["ミサキ_メモリアル","ミサキ","./images/icon/Arius/misaki02.webp"],
+    ["ヒヨリ","ヒヨリ","./images/icon/Arius/hiyori01.webp"],
+    ["ヒヨリ_メモリアル","ヒヨリ","./images/icon/Arius/hiyori02.webp"],
+    //["未実装","","./images/icon/Arius/chara.webp"]
 ];
 const valkyrie = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Valkyrie/chara.webp"]
+    ["カンナ","カンナ","./images/icon/Valkyrie/kanna01.webp"],
+    ["カンナ_メモリアル","カンナ","./images/icon/Valkyrie/kanna02.webp"],
+    ["キリノ","キリノ","./images/icon/Valkyrie/kirino01.webp"],
+    ["キリノ_メモリアル","キリノ","./images/icon/Valkyrie/kirino02.webp"],
+    ["フブキ","フブキ","./images/icon/Valkyrie/hubuki01.webp"],
+    ["フブキ_メモリアル","フブキ","./images/icon/Valkyrie/hubuki02.webp"]
+    //["未実装","","./images/icon/Valkyrie/chara.webp"]
 ];
 const renpou = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Renpou/chara.webp"]
+    ["連邦生徒会長","連邦生徒会長","./images/icon/Renpou/kaityou01.webp"],
+    ["リン","リン","./images/icon/Renpou/rin01.webp"],
+    ["モモカ","モモカ","./images/icon/Renpou/momoka01.webp"],
+    ["カヤ","カヤ","./images/icon/Renpou/kaya01.webp"],
+    ["アオイ","アオイ","./images/icon/Renpou/aoi01.webp"],
+    ["アユム","アユム","./images/icon/Renpou/ayumu01.webp"]
+    //["未実装","","./images/icon/Renpou/chara.webp"]
 ];
 const schale = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Schale/chara.webp"]
+    ["先生","先生","./images/icon/Schale/tercher01.webp"],
+    ["アロナ","アロナ","./images/icon/Schale/arona01.webp"],
+    ["ソラ","ソラ","./images/icon/Schale/sora01.webp"]
+    //["未実装","","./images/icon/Schale/chara.webp"]
 ];
 const gematria = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Gematria/chara.webp"]
+    ["黒服","黒服","./images/icon/Gematria/kurohuku01.webp"],
+    ["黒服-変化-","黒服","./images/icon/Gematria/kurohuku02.webp"],
+    ["ゴルコンダ","ゴルコンダ","./images/icon/Gematria/gorukonda01.webp"],
+    ["デカルコマニー","デカルコマニー","./images/icon/Gematria/dekarukomany01.webp"],
+    ["マエストロ","マエストロ","./images/icon/Gematria/maestoro01.webp"],
+    ["マエストロ-変化-","マエストロ","./images/icon/Gematria/maestoro02.webp"],
+    ["ベアトリーチェ","ベアトリーチェ","./images/icon/Gematria/bea01.webp"],
+    ["フランシス","フランシス","./images/icon/Gematria/huransisu01.webp"],
+    //["未実装","","./images/icon/Gematria/chara.webp"]
 ];
 const mob = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Mob/chara.webp"]
+    ["スケバン(SMG)","スケバン","./images/icon/Mob/sukeban01.webp"],
+    ["スケバン(MG)","スケバン","./images/icon/Mob/sukeban02.webp"],
+    ["スケバン(SR)","スケバン","./images/icon/Mob/sukeban03.webp"],
+    ["ヘルメット団","ヘルメット団","./images/icon/Mob/helmet01.webp"],
+    ["ヘルメット団幹部","ヘルメット団幹部","./images/icon/Mob/helmet02.webp"],
+    
+    //["未実装","","./images/icon/Mob/chara.webp"]
 ];
 const hue = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Hue/chara.webp"]
+    ["プレナパデス","プレナパデス","./images/icon/Hue/purenapadesu01.webp"],
+    ["プラナ","プラナ","./images/icon/Hue/purana01.webp"],
+    ["シロコ*テラー","シロコ*テラー","./images/icon/Hue/kuroko01.webp"],
+    ["無名の司祭","無名の司祭","./images/icon/Hue/mumei01.webp"],
+    ["ケイ","ケイ","./images/icon/Hue/key01.webp"]
+    //["未実装","","./images/icon/Hue/chara.webp"]
 ];
 const another = [
     ["キャラ未選択","",""],
-    ["未実装","","./images/icon/Another/chara.webp"]
+    ["初音ミク","初音ミク","./images/icon/Another/miku01.webp"],
+    ["初音ミク_メモリアル","初音ミク","./images/icon/Another/miku02.webp"],
+    /*["","","./images/icon/Another/01.webp"],
+    ["_メモリアル","","./images/icon/Another/02.webp"],
+    ["","","./images/icon/Another/01.webp"],
+    ["_メモリアル","","./images/icon/Another/02.webp"],
+    ["","","./images/icon/Another/01.webp"],
+    ["_メモリアル","","./images/icon/Another/02.webp"],*/
+    ["シノン","シノン","./images/icon/Another/shinon01.webp"],
+    ["マイ","マイ","./images/icon/Another/mai01.webp"]
+    //["未実装","","./images/icon/Another/chara.webp"]
 ];
 const kaiser = [
     ["キャラ未選択","",""],

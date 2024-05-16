@@ -149,7 +149,7 @@
 		<div id="sub">
 			<div class="input_box">
 				<details>
-					<summary>保存データ一覧</summary>
+					<summary title="&#13;&#10;クリックすると保存されているデータが&#13;&#10;一覧で表示されます。&#13;&#10;&#13;&#10;また、選択することで保存や復元、削除等の&#13;&#10;操作をすることができます。">保存データ一覧</summary>
 					<table class="dataTable">
 						<tr>
 							<th>1.</th>
@@ -171,26 +171,26 @@
 			</div>
 			<div class="input_box">
 				<details>
-					<summary>保存/復元/完成</summary>
+					<summary title="選択したデータの操作ができます。&#13;&#10;">保存/復元/完成</summary>
 					<div class="fileOption">
-						<a id="save" download="incomplete.txt"><font color=#5058ff><u>セーブ</u></font></a>
+						<a id="save" download="incomplete.txt" title="データの保存ができます。&#13;&#10;保存をする際は作品名と作者名の&#13;&#10;入力をしないと動作しません。"><font color=#5058ff><u>セーブ</u></font></a>
 					</div>
 					<div class="fileOption">
 						<!--<label for="load"><font color=#5058ff>復元</font></label>-->
-						<a id="load"><font color=#5058ff>復元</font></a>
+						<a id="load" title="保存されているデータを復元することができます。"><font color=#5058ff>復元</font></a>
 						<!--<input accept=".txt" type="file" id="load" name="myfile" style="display: none;"></input>-->
 					</div>
 					<div class="fileOption">
-						<font color=#5058ff><a href="" id="ss" style="pointer-events:auto;">完成</a></font>
+						<font color=#5058ff><a href="" id="ss" style="pointer-events:auto;" title="画面に表示されているトークを&#13;&#10;画像にしてダウンロードすることが出来ます。">完成</a></font>
 					</div>
 					<div class="fileOption">
-						<a id="remove"><font color=#ff0000>削除</font></a>
+						<a id="remove" title="選択されたデータを削除します。&#13;&#10;削除されたデータは復元できないので&#13;&#10;"><font color=#ff0000>削除</font></a>
 					</div>
-					<label id="now">選択されているデータ：</label>
+					
 				<br>
 				
 				</details>
-				
+				<label id="now">選択されているデータ：</label>
 			</div>
 			
 			<div class="input_box">
