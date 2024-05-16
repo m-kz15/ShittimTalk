@@ -198,8 +198,8 @@ const trinity = [
     //  救護騎士団
     ["ミネ","ミネ","./images/icon/Trinity/mine01.webp"],
     ["ミネ_メモリアル","ミネ","./images/icon/Trinity/mine02.webp"],
-    ["セリカ","セリカ","./images/icon/Trinity/serika01.webp"],
-    ["セリカ_メモリアル","セリカ","./images/icon/Trinity/serika02.webp"],
+    ["セリナ","セリナ","./images/icon/Trinity/serina01.webp"],
+    ["セリナ_メモリアル","セリナ","./images/icon/Trinity/serina02.webp"],
     ["ハナエ","ハナエ","./images/icon/Trinity/hanae01.webp"],
     ["ハナエ_メモリアル","ハナエ","./images/icon/Trinity/hanae02.webp"],
     //  図書委員会
