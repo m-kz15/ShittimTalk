@@ -452,7 +452,7 @@ html2canvas(document.querySelector("#create_area"), {
     windowWidth: this.captureWidth,
     height: this.captureHeight,
     windowWidth: this.captureHeight,
-    scale: 1,
+    scale: 1.5,
 }).then(canvas => {
     document.getElementById('result').appendChild(canvas).setAttribute("id", "canvas");
     var viewImage = document.createElement('img');
@@ -468,7 +468,7 @@ function setCanvas(){
         windowWidth: this.captureWidth,
         height: this.captureHeight,
         windowHeight: this.captureHeight,
-        scale: 1,
+        scale: 1.5,
     }).then(canvas => {
         document.getElementById('downloadImage').remove();
         document.getElementById('canvas').remove();
