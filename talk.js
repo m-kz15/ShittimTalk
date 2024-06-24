@@ -1,5 +1,6 @@
 var alldata = "";
 var messageIdx = 0;
+var viewMsg = [];
 var output = document.getElementById('output');
 var select_afflication = document.getElementById("sel_school");
 var select_s = document.getElementById("sel_student");
@@ -517,7 +518,7 @@ window.onload = function(){
 function display() {
     var loop = '';
     loop += '<p class="gap" id="big"></p>';
-    Repository.data.MsgList.forEach(function(elment) {
+    viewMsg.forEach(function(elment) {
         loop += elment.replaceAll('&nbsp;', '');
     });
     loop += '<p class="gap" id="large"></p>';
@@ -562,49 +563,58 @@ function createStudent(category,flg){
     let effect = document.getElementById("input_effect_icon");
     let message = document.getElementById("input_student_talk");
     if(message.value != ""){
-        if(before == category+":"+name.value){
-            Repository.data.MsgList[messageIdx] = '<p class="gap" id="small"></p>';
+        Repository.data.MsgList[messageIdx] = [];
+        Repository.data.MsgList[messageIdx][0] = 0;
+        Repository.data.MsgList[messageIdx][1] = category;
+        Repository.data.MsgList[messageIdx][2] = name.value;
+        Repository.data.MsgList[messageIdx][3] = icon.value;
+        Repository.data.MsgList[messageIdx][4] = effect.value;
+        Repository.data.MsgList[messageIdx][5] = flg;
+        Repository.data.MsgList[messageIdx][6] = message.value;
+
+        if(before == Repository.data.MsgList[messageIdx][1]+":"+Repository.data.MsgList[messageIdx][2]){
+            viewMsg[messageIdx] = '<p class="gap" id="small"></p>';
         }else{
-            Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
+            viewMsg[messageIdx] = '<p class="gap" id="big"></p>';
         }
-        before = category+":"+name.value;
-        Repository.data.MsgHistory[messageIdx] = category+":"+name.value;
+        before = Repository.data.MsgList[messageIdx][1]+":"+Repository.data.MsgList[messageIdx][2];
+        Repository.data.MsgHistory[messageIdx] = Repository.data.MsgList[messageIdx][1]+":"+Repository.data.MsgList[messageIdx][2];
         if(flg == true){
-            Repository.data.MsgList[messageIdx] += '\
-        <div class="talk_box" id="'+category+'">\n\
+            viewMsg[messageIdx] += '\
+        <div class="talk_box" id="'+Repository.data.MsgList[messageIdx][1]+'">\n\
             <div class="icon_box">\n\
-                <img src="'+icon.value+'" class="icon">\n\
+                <img src="'+Repository.data.MsgList[messageIdx][3]+'" class="icon">\n\
             </div>\n\
             ';
-            if(effect.value != ""){
-                Repository.data.MsgList[messageIdx] += '\
+            if(Repository.data.MsgList[messageIdx][4] != ""){
+                viewMsg[messageIdx] += '\
             <div class="icon_box">\n\
-                <img src="'+effect.value+'" class="icon">\n\
+                <img src="'+Repository.data.MsgList[messageIdx][4]+'" class="icon">\n\
             </div>\n\
             ';
             }
-            Repository.data.MsgList[messageIdx] += '\
+            viewMsg[messageIdx] += '\
             <div class="frame">\n\
                 <div class="name_box">\n\
                     <div class="name_area">\n\
-                        <p class="name">'+name.value+'</p>\n\
+                        <p class="name">'+Repository.data.MsgList[messageIdx][2]+'</p>\n\
                     </div>\n\
                 </div>\n\
                 <div class="message_box">\n\
-                    <div class="message_area" id="'+flg+'">\n\
-                        <p class="message">'+split(message.value)+'</p>\n\
+                    <div class="message_area" id="'+Repository.data.MsgList[messageIdx][5]+'">\n\
+                        <p class="message">'+split(Repository.data.MsgList[messageIdx][6])+'</p>\n\
                     </div>\n\
                 </div>\n\
             </div>\n\
         </div>\n\
             ';
         }else{
-            Repository.data.MsgList[messageIdx] += '\
-        <div class="talk_box" id="'+category+'">\n\
+            viewMsg[messageIdx] += '\
+        <div class="talk_box" id="'+Repository.data.MsgList[messageIdx][1]+'">\n\
             <div class="frame">\n\
                 <div class="message_box">\n\
-                    <div class="message_area" id="'+flg+'">\n\
-                        <p class="message">'+split(message.value)+'</p>\n\
+                    <div class="message_area" id="'+Repository.data.MsgList[messageIdx][5]+'">\n\
+                        <p class="message">'+split(Repository.data.MsgList[messageIdx][6])+'</p>\n\
                     </div>\n\
                 </div>\n\
             </div>\n\
@@ -622,19 +632,24 @@ function createStudent(category,flg){
 function createTeacher(category, flg){
     let message = document.getElementById("input_teacher_talk");
     if(message.value != ""){
+        Repository.data.MsgList[messageIdx] = [];
+        Repository.data.MsgList[messageIdx][0] = 1;
+        Repository.data.MsgList[messageIdx][1] = category;
+        Repository.data.MsgList[messageIdx][5] = flg;
+        Repository.data.MsgList[messageIdx][6] = message.value;
         if(before == "teacher"){
-            Repository.data.MsgList[messageIdx] = '<p class="gap" id="small"></p>';
+            viewMsg[messageIdx] = '<p class="gap" id="small"></p>';
         }else{
-            Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
+            viewMsg[messageIdx] = '<p class="gap" id="big"></p>';
         }
         before = "teacher";
         Repository.data.MsgHistory[messageIdx] = "teacher";
-        Repository.data.MsgList[messageIdx] += '\
-        <div class="talk_box" id="'+category+'">\n\
+        viewMsg[messageIdx] += '\
+        <div class="talk_box" id="'+Repository.data.MsgList[messageIdx][1]+'">\n\
             <div class="frame">\n\
                 <div class="message_box">\n\
-                    <div class="message_area" id="'+flg+'">\n\
-                        <p class="message">'+split(message.value)+'</p>\n\
+                    <div class="message_area" id="'+Repository.data.MsgList[messageIdx][5]+'">\n\
+                        <p class="message">'+split(Repository.data.MsgList[messageIdx][6])+'</p>\n\
                     </div>\n\
                 </div>\n\
             </div>\n\
@@ -650,15 +665,21 @@ function createTeacher(category, flg){
 function createComment(category, flg){
     let message = document.getElementById("input_comment");
     if(message.value != ""){
+        Repository.data.MsgList[messageIdx] = [];
+        Repository.data.MsgList[messageIdx][0] = 2;
+        Repository.data.MsgList[messageIdx][1] = category;
+        Repository.data.MsgList[messageIdx][5] = flg;
+        Repository.data.MsgList[messageIdx][6] = message.value;
+
         before = "comment";
         Repository.data.MsgHistory[messageIdx] = "comment";
-        Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
-        Repository.data.MsgList[messageIdx] += '\
-        <div class="talk_box" id="'+category+'">\n\
+        viewMsg[messageIdx] = '<p class="gap" id="big"></p>';
+        viewMsg[messageIdx] += '\
+        <div class="talk_box" id="'+Repository.data.MsgList[messageIdx][1]+'">\n\
             <div class="frame">\n\
                 <div class="message_box">\n\
-                    <div class="message_area" id="'+flg+'">\n\
-                        <p class="message">'+split(message.value)+'</p>\n\
+                    <div class="message_area" id="'+Repository.data.MsgList[messageIdx][5]+'">\n\
+                        <p class="message">'+split(Repository.data.MsgList[messageIdx][6])+'</p>\n\
                     </div>\n\
                 </div>\n\
             </div>\n\
@@ -677,18 +698,26 @@ function createReply(category, flg){
     let replyFlg = false;
 
     if(!(message1.value == "" && message2.value == "")){
+        Repository.data.MsgList[messageIdx] = [];
+        Repository.data.MsgList[messageIdx][0] = 3;
+        Repository.data.MsgList[messageIdx][1] = category;
+        Repository.data.MsgList[messageIdx][5] = flg;
+        Repository.data.MsgList[messageIdx][6] = message1.value;
+        Repository.data.MsgList[messageIdx][7] = message2.value;
+
         before = "reply";
         Repository.data.MsgHistory[messageIdx] = "reply";
         if(message1.value == "" && message2.value != ""){
             replyFlg = true;
-            message1.value = message2.value;
+            Repository.data.MsgList[messageIdx][6] = message2.value;
+            Repository.data.MsgList[messageIdx][7] = "";
         }else if(message1.value != "" && message2.value == ""){
             replyFlg = true;
+            Repository.data.MsgList[messageIdx][7] = "";
         }
-
-        Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
-        Repository.data.MsgList[messageIdx] += '\
-    <div class="talk_box" id="'+category+'">\n\
+        viewMsg[messageIdx] = '<p class="gap" id="big"></p>';
+        viewMsg[messageIdx] += '\
+    <div class="talk_box" id="'+Repository.data.MsgList[messageIdx][1]+'">\n\
 	<div class="frame">\n\
 		<div class="title_area">\n\
 			<text class="left_line" id="l_blue">┃</text>\n\
@@ -699,24 +728,24 @@ function createReply(category, flg){
             <div class="shadow">\n\
     ';
         if(replyFlg){
-            Repository.data.MsgList[messageIdx] += '\
-                <div class="message_area" id="'+flg+'">\n\
-				    <p class="message">'+split(message1.value)+'</p>\n\
+            viewMsg[messageIdx] += '\
+                <div class="message_area" id="'+Repository.data.MsgList[messageIdx][5]+'">\n\
+				    <p class="message">'+split(Repository.data.MsgList[messageIdx][6])+'</p>\n\
 		        </div>\n\
         ';
         }else{
-            Repository.data.MsgList[messageIdx] += '\
-                <div class="message_area" id="'+flg+'">\n\
-				    <p class="message">'+split(message1.value)+'</p>\n\
+            viewMsg[messageIdx] += '\
+                <div class="message_area" id="'+Repository.data.MsgList[messageIdx][5]+'">\n\
+				    <p class="message">'+split(Repository.data.MsgList[messageIdx][6])+'</p>\n\
 		        </div>\n\
             </div>\n\
             <div class="shadow">\n\
-                <div class="message_area" id="'+flg+'">\n\
-				    <p class="message">'+split(message2.value)+'</p>\n\
+                <div class="message_area" id="'+Repository.data.MsgList[messageIdx][5]+'">\n\
+				    <p class="message">'+split(Repository.data.MsgList[messageIdx][7])+'</p>\n\
 		        </div>\n\
         ';
         }
-        Repository.data.MsgList[messageIdx] += '\
+        viewMsg[messageIdx] += '\
             </div>\n\
 		</div>\n\
 	</div>\n\
@@ -733,14 +762,19 @@ function createReply(category, flg){
 }
 
 function createBonding(category, flg){
-    let message = document.getElementById("input_bonding_name");
+    var message = document.getElementById("input_bonding_name").value;
 
-    if(message.value != ""){
+    if(message != ""){
+        Repository.data.MsgList[messageIdx] = [];
+        Repository.data.MsgList[messageIdx][0] = 4;
+        Repository.data.MsgList[messageIdx][1] = category;
+        Repository.data.MsgList[messageIdx][2] = message;
+        Repository.data.MsgList[messageIdx][5] = flg;
         before = "bonding";
-    Repository.data.MsgHistory[messageIdx] = "bonding";
-    Repository.data.MsgList[messageIdx] = '<p class="gap" id="big"></p>';
-    Repository.data.MsgList[messageIdx] += '\
-<div class="talk_box" id="'+category+'">\n\
+        Repository.data.MsgHistory[messageIdx] = "bonding";
+        viewMsg[messageIdx] = '<p class="gap" id="big"></p>';
+        viewMsg[messageIdx] += '\
+<div class="talk_box" id="'+Repository.data.MsgList[messageIdx][1]+'">\n\
 	<div class="frame">\n\
 		<div class="title_area">\n\
 			<text class="left_line" id="l_pink">┃</text>\n\
@@ -749,8 +783,8 @@ function createBonding(category, flg){
 		<p class="disp_line" id="b_pink">───────────────────</p>\n\
 		<div class="message_box">\n\
             <div class="shadow">\n\
-                <div class="message_area" id="'+flg+'">\n\
-                    <p class="message">'+splitCheck(message.value)+'の絆ストーリーへ</p>\n\
+                <div class="message_area" id="'+Repository.data.MsgList[messageIdx][5]+'">\n\
+                    <p class="message">'+splitCheck(Repository.data.MsgList[messageIdx][2])+'の絆ストーリーへ</p>\n\
                 </div>\n\
             </div>\n\
 		</div>\n\
@@ -768,13 +802,13 @@ function createBonding(category, flg){
 function deleteMessage(){
     if(messageIdx > 0){
         Repository.data.MsgList.pop();
+        viewMsg.pop();
         messageIdx--;
         if(messageIdx > 0){
             before = Repository.data.MsgHistory[messageIdx-1];
         }else{
             before = "null";
         }
-        
         display();
     }
 }
@@ -896,19 +930,23 @@ document.querySelector('#input_photo').addEventListener('change', (event) => {
     }
 
     reader.addEventListener('load', function() {
-        Repository.data.MsgList[messageIdx] = '<p class="gap" id="large"></p>';
-        Repository.data.MsgList[messageIdx] += '\
-<div class="talk_box" id="c_p">\n\
+        Repository.data.MsgList[messageIdx] = [];
+        Repository.data.MsgList[messageIdx][0] = 5;
+        Repository.data.MsgList[messageIdx][1] = 'c_p';
+        Repository.data.MsgList[messageIdx][8] = reader.result;
+        viewMsg[messageIdx] = '<p class="gap" id="large"></p>';
+        viewMsg[messageIdx] += '\
+<div class="talk_box" id="'+Repository.data.MsgList[messageIdx][1]+'">\n\
 	<div class="frame">\n\
 		<div class="photo_box">\n\
             <div class="photo_area">\n\
-			    <img src="'+reader.result+'" class="photo">\n\
+			    <img src="'+Repository.data.MsgList[messageIdx][8]+'" class="photo">\n\
 		    </div>\n\
         </div>\n\
 	</div>\n\
 </div>\n';
-        Repository.data.MsgList[messageIdx] += '<p class="gap" id="big"></p>';
-        Repository.data.MsgList[messageIdx] += '<p class="gap" id="small"></p>';
+        viewMsg[messageIdx] += '<p class="gap" id="big"></p>';
+        viewMsg[messageIdx] += '<p class="gap" id="small"></p>';
         
         messageIdx++;
         display();
@@ -1060,6 +1098,7 @@ document.getElementById('load').addEventListener('click', function() {
         }else{
             
             messageIdx = Repository.data.MsgList.length;
+            restoreAction();
             //alert(Repository.data.MsgHistory[messageIdx-1])
             before = Repository.data.MsgHistory[messageIdx-1];
             document.getElementById("create_title").innerText = "作品名："+Repository.data.Title;
@@ -1108,5 +1147,233 @@ document.getElementById('remove').addEventListener('click', function() {
         messageIdx++;
     })
 })*/
+/*var logdata = [
+    type,(0:生徒,1:先生,2:コメント,3:返信,4:絆,5:写真)
+    position,(left,right,center)
+    name,(生徒名)
+    icon,(アイコン画像)
+    efect,(装飾画像)
+    bubble,(吹き出しflg)
+    message1,(メッセージ)
+    message2,(返信用)
+    photo,(写真用)
+    gap(間隔)
+];*/
+const restoreAction = function(){
+    let i = 0;
+    while(i < Repository.data.MsgList.length){
+        restoreMessage(i);
+        i++;
+    }
+};
+
+function restoreMessage(idx){
+    switch(Repository.data.MsgList[idx][0]){
+        case 0:
+            restoreStudent(idx);
+            break;
+        case 1:
+            restoreTeacher(idx);
+            break;
+        case 2:
+            restoreComment(idx);
+            break;
+        case 3:
+            restoreReply(idx);
+            break;
+        case 4:
+            restoreBonding(idx);
+            break;
+        case 5:
+            restorePhoto(idx);
+            break;
+    }
+};
+
+function restoreStudent(idx){
+    
+    if(before == Repository.data.MsgList[idx][1]+":"+Repository.data.MsgList[idx][2]){
+        viewMsg[idx] = '<p class="gap" id="small"></p>';
+    }else{
+        viewMsg[idx] = '<p class="gap" id="small"></p>';
+    }
+    before = Repository.data.MsgList[idx][1]+":"+Repository.data.MsgList[idx][2];
+    Repository.data.MsgHistory[messageIdx] = Repository.data.MsgList[idx][1]+":"+Repository.data.MsgList[idx][2];
+    if(Repository.data.MsgList[idx][5] == true){
+        viewMsg[idx] += '\
+    <div class="talk_box" id="'+Repository.data.MsgList[idx][1]+'">\n\
+        <div class="icon_box">\n\
+            <img src="'+Repository.data.MsgList[idx][3]+'" class="icon">\n\
+        </div>\n\
+        ';
+        if(Repository.data.MsgList[idx][4] != ""){
+            viewMsg[idx] += '\
+        <div class="icon_box">\n\
+            <img src="'+Repository.data.MsgList[idx][4]+'" class="icon">\n\
+        </div>\n\
+        ';
+        }
+        viewMsg[idx] += '\
+        <div class="frame">\n\
+            <div class="name_box">\n\
+                <div class="name_area">\n\
+                    <p class="name">'+Repository.data.MsgList[idx][2]+'</p>\n\
+                </div>\n\
+            </div>\n\
+            <div class="message_box">\n\
+                <div class="message_area" id="'+Repository.data.MsgList[idx][5]+'">\n\
+                    <p class="message">'+split(Repository.data.MsgList[idx][6])+'</p>\n\
+                </div>\n\
+            </div>\n\
+        </div>\n\
+    </div>\n\
+        ';
+    }else{
+        viewMsg[idx] += '\
+    <div class="talk_box" id="'+Repository.data.MsgList[idx][1]+'">\n\
+        <div class="frame">\n\
+            <div class="message_box">\n\
+                <div class="message_area" id="'+Repository.data.MsgList[idx][5]+'">\n\
+                    <p class="message">'+split(Repository.data.MsgList[idx][6])+'</p>\n\
+                </div>\n\
+            </div>\n\
+        </div>\n\
+    </div>\n\
+        ';
+    }
+    display();
+    
+}
+function restoreTeacher(idx){
+
+    if(before == "teacher"){
+        viewMsg[idx] = '<p class="gap" id="small"></p>';
+    }else{
+        viewMsg[idx] = '<p class="gap" id="big"></p>';
+    }
+    before = "teacher";
+    Repository.data.MsgHistory[idx] = "teacher";
+    viewMsg[idx] += '\
+    <div class="talk_box" id="'+Repository.data.MsgList[idx][1]+'">\n\
+        <div class="frame">\n\
+            <div class="message_box">\n\
+                <div class="message_area" id="'+Repository.data.MsgList[idx][5]+'">\n\
+                    <p class="message">'+split(Repository.data.MsgList[idx][6])+'</p>\n\
+                </div>\n\
+            </div>\n\
+        </div>\n\
+    </div>\n\
+        ';
+    display();
+};
+function restoreComment(idx){
+    before = "comment";
+    Repository.data.MsgHistory[idx] = "comment";
+    viewMsg[idx] = '<p class="gap" id="big"></p>';
+    viewMsg[idx] += '\
+    <div class="talk_box" id="'+Repository.data.MsgList[idx][1]+'">\n\
+        <div class="frame">\n\
+            <div class="message_box">\n\
+                <div class="message_area" id="'+Repository.data.MsgList[idx][5]+'">\n\
+                    <p class="message">'+split(Repository.data.MsgList[idx][6])+'</p>\n\
+                </div>\n\
+            </div>\n\
+        </div>\n\
+    </div>\n\
+    ';
+    display();
+};
+function restoreReply(idx){
+    let replyFlg = false;
+
+    before = "reply";
+    Repository.data.MsgHistory[idx] = "reply";
+    if(Repository.data.MsgList[idx][6] == "" && Repository.data.MsgList[idx][7] != ""){
+        replyFlg = true;
+    }else if(Repository.data.MsgList[idx][6] != "" && Repository.data.MsgList[idx][7] == ""){
+        replyFlg = true;
+    }
+
+    viewMsg[idx] = '<p class="gap" id="big"></p>';
+    viewMsg[idx] += '\
+    <div class="talk_box" id="'+Repository.data.MsgList[idx][1]+'">\n\
+	<div class="frame">\n\
+		<div class="title_area">\n\
+			<text class="left_line" id="l_blue">┃</text>\n\
+			<p class="title">返信する</p>\n\
+		</div>\n\
+		<p class="disp_line" id="b_blue">───────────────────</p>\n\
+		<div class="message_box">\n\
+            <div class="shadow">\n\
+    ';
+    if(replyFlg){
+        viewMsg[idx] += '\
+                <div class="message_area" id="'+Repository.data.MsgList[idx][5]+'">\n\
+				    <p class="message">'+split(Repository.data.MsgList[idx][6])+'</p>\n\
+		        </div>\n\
+    ';
+    }else{
+        viewMsg[idx] += '\
+                <div class="message_area" id="'+Repository.data.MsgList[idx][5]+'">\n\
+				    <p class="message">'+split(Repository.data.MsgList[idx][6])+'</p>\n\
+		        </div>\n\
+            </div>\n\
+            <div class="shadow">\n\
+                <div class="message_area" id="'+Repository.data.MsgList[idx][5]+'">\n\
+				    <p class="message">'+split(Repository.data.MsgList[idx][7])+'</p>\n\
+		        </div>\n\
+        ';
+    }
+    viewMsg[idx] += '\
+            </div>\n\
+		</div>\n\
+	</div>\n\
+</div>\n\
+    ';
+    display();
+};
+function restoreBonding(idx){
+    before = "bonding";
+    Repository.data.MsgHistory[idx] = "bonding";
+    viewMsg[idx] = '<p class="gap" id="big"></p>';
+    viewMsg[idx] += '\
+<div class="talk_box" id="'+Repository.data.MsgList[idx][1]+'">\n\
+	<div class="frame">\n\
+		<div class="title_area">\n\
+			<text class="left_line" id="l_pink">┃</text>\n\
+			<p class="title">絆イベント</p>\n\
+		</div>\n\
+		<p class="disp_line" id="b_pink">───────────────────</p>\n\
+		<div class="message_box">\n\
+            <div class="shadow">\n\
+                <div class="message_area" id="'+Repository.data.MsgList[idx][5]+'">\n\
+                    <p class="message">'+splitCheck(Repository.data.MsgList[idx][2])+'の絆ストーリーへ</p>\n\
+                </div>\n\
+            </div>\n\
+		</div>\n\
+	</div>\n\
+</div>\n\
+    ';
+        display();
+};
+function restorePhoto(idx){
+    before = "photo";
+    Repository.data.MsgHistory[idx] = "photo";
+    viewMsg[idx] = '<p class="gap" id="large"></p>';
+    viewMsg[idx] += '\
+<div class="talk_box" id="'+Repository.data.MsgList[idx][1]+'">\n\
+	<div class="frame">\n\
+		<div class="photo_box">\n\
+            <div class="photo_area">\n\
+			    <img src="'+Repository.data.MsgList[idx][8]+'" class="photo">\n\
+		    </div>\n\
+        </div>\n\
+	</div>\n\
+</div>\n';
+    viewMsg[idx] += '<p class="gap" id="big"></p>';
+    viewMsg[idx] += '<p class="gap" id="small"></p>';
+
+    display();
+};
 
 
