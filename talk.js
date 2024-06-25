@@ -1096,7 +1096,7 @@ document.getElementById('load').addEventListener('click', function() {
         if(Repository.data.MsgList.length == 0){
             alert("復元できるデータがありません。")
         }else{
-            
+            viewMsg = [];
             messageIdx = Repository.data.MsgList.length;
             restoreAction();
             //alert(Repository.data.MsgHistory[messageIdx-1])
